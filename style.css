@@ -35,6 +35,21 @@ h1, h2, h3 {
     color: #614e3b;
 }
 
+/* BAGODONG ISTILO PARA ITI LOGO NGA NAIKABIL ITI NGATO */
+.logo-section {
+    text-align: center;
+    margin: 15px 0;
+    padding: 5px;
+}
+
+.site-branding-logo {
+    max-width: 180px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    filter: sepia(15%) contrast(105%); /* Agparang ana-angay iti lumang papel a tema */
+}
+
 /* Estilo ng Tabs */
 .tab-buttons {
     display: flex;
