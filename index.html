@@ -81,7 +81,7 @@
         </div>
 
         <!-- TAB 2: Attire / Susuotin -->
-        <div id="attireTab" class="tab-content">
+        <div id="attireTab" class="tab-content" style="display:none;">
             <h2>Kasuotang Pilipino / Historic Style</h2>
             <p>Upang mas maging angkop sa ating temang makasaysayan, hinihimok ang lahat na dumalo suot ang mga sumusunod na istilo:</p>
             
@@ -208,12 +208,13 @@
             border: 1px solid #8c6d46;
         }
         .attire-img-fixed {
-            width: 100%;
-            height: auto;
-            max-height: 500px;
-            object-fit: contain; /* Siguraduhing makikita nang buo ang litrato nang hindi na-crop */
-            display: block;
-            margin: 0 auto;
+            width: 100% !important;
+            height: auto !important;
+            max-height: 500px !important;
+            object-fit: contain !important; /* Siguraduhing makikita nang buo ang litrato nang hindi na-crop */
+            display: block !important;
+            margin: 0 auto !important;
+            background: #fff !important;
         }
 
         /* Media Query para sa mas maliliit na screen (iPhone SE, Android small screens) */
@@ -235,7 +236,7 @@
                 font-size: 0.75rem;
             }
             .attire-img-fixed {
-                max-height: 320px; /* Ibagay ang taas para sa maliliit na mobile screen */
+                max-height: 320px !important; /* Ibagay ang taas para sa maliliit na mobile screen */
             }
         }
     </style>
