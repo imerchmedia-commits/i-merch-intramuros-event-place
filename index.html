@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Imbitasyon sa Foro de Intramuros</title>
     <link rel="stylesheet" href="style.css">
-    <!-- Google Fonts para sa Historic Look -->
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -25,19 +24,20 @@
         <!-- TAB 1: Map & Event Place Pictures -->
         <div id="mapTab" class="tab-content active">
             <h2>Gabay Patungo sa Himpilan</h2>
-            <p>I-click ang button sa ibaba upang awtomatikong buksan ang direksyon mula sa iyong kasalukuyang kinaroroonan patungo sa <strong>Foro de Intramuros</strong>.</p>
+            <p>Ilagay ang iyong lokasyon o i-click ang button upang gabayan ka papunta sa <strong>Foro de Intramuros</strong>.</p>
             
-            <!-- Waze-style Interactive Navigation Button -->
-            <div class="nav-button-container" style="text-align: center; margin-bottom: 20px;">
-                <button onclick="getDirections()" class="waze-btn">
-                    🗺️ Buksan ang Waze / Maps mula sa Aking Lokasyon
-                </button>
-                <p id="location-status" style="font-size: 0.85rem; font-style: italic; margin-top: 5px; color: #614e3b;"></p>
+            <!-- Form para sa paglalagay ng sariling lokasyon -->
+            <div class="nav-control-box" style="margin-bottom: 15px; text-align: center;">
+                <input type="text" id="user-location-input" placeholder="Hal. Quiapo, Manila o Tondo" style="padding: 10px; width: 60%; border: 1px solid #8c6d46; background: #fdfbf7; font-family: 'Playfair Display', serif;">
+                <button onclick="startCustomNavigation()" class="waze-btn" style="padding: 10px 15px; font-size: 0.9rem;">Maglakbay (Go)</button>
+                <br>
+                <button onclick="getMyCurrentLocation()" class="waze-btn" style="margin-top: 10px; background-color: #594228; font-size: 0.85rem;">📍 Gamitin ang Aking GPS Location</button>
             </div>
 
-            <!-- Google Maps Embed para sa Foro de Intramuros -->
+            <!-- Google Maps Embed na nakatutok sa Foro de Intramuros -->
             <div class="map-wrapper">
                 <iframe 
+                    id="embedded-map"
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3860.9996658066224!2d120.97235547689626!3d14.591993577123984!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397ca3e7b1685e1%3A0xc3434cf0087796d6!2sForo%20de%20Intramuros!5e0!3m2!1sen!2sph!4v1710000000000!5m2!1sen!2sph" 
                     width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy">
                 </iframe>
@@ -46,21 +46,16 @@
             <div class="gallery-section">
                 <h3>Anyo ng Paligid at Event Place</h3>
                 <div class="image-grid">
-                    <!-- Larawan 1: Harapan / Exterior -->
                     <div class="img-card">
-                        <img src="500650343_1099941865503385_2702545614667796251_n.jpg" alt="Foro de Intramuros Exterior">[cite: 1]
+                        <img src="front.jpg" alt="Foro de Intramuros Exterior">[cite: 1]
                         <p>Klasikong Harapan ng Gusali</p>
                     </div>
-                    
-                    <!-- Larawan 2: Loob / Interior -->
                     <div class="img-card">
-                        <img src="500773192_1099941908836714_5834370989501947709_n.jpg" alt="Foro de Intramuros Interior">[cite: 2]
+                        <img src="side.jpg" alt="Foro de Intramuros Interior">[cite: 2]
                         <p>Bulwagan at Liwanag sa Loob</p>
                     </div>
-
-                    <!-- Larawan 3: Aerial View -->
                     <div class="img-card" style="width: 100%;">
-                        <img src="501065252_1099941882170050_7861690223930863356_n.jpg" alt="Foro de Intramuros Aerial View" style="height: 280px;">[cite: 3]
+                        <img src="top.jpg" alt="Foro de Intramuros Aerial View" style="height: 280px;">[cite: 3]
                         <p>Kabuuan ng Lugar (Aerial View)</p>
                     </div>
                 </div>
@@ -74,7 +69,7 @@
             
             <div class="image-grid">
                 <div class="img-card" style="width: 100%;">
-                    <img src="samplepic.jfif" alt="Historic Event Attire Style" style="height: 450px; object-fit: contain; background: #fff;">[cite: 6]
+                    <img src="samplepic.jpg" alt="Historic Event Attire Style" style="height: 450px; object-fit: contain; background: #fff;">[cite: 6]
                     <p>Barong Tagalog, Filipiniana, at iba pang Historic / Vintage Look[cite: 6]</p>
                 </div>
             </div>
@@ -85,7 +80,7 @@
         </footer>
     </div>
 
-    <!-- JavaScript para sa Tabs at Auto-Navigation -->
+    <!-- JavaScript para sa Tabs at Navigation -->
     <script>
         function openTab(evt, tabName) {
             let i, tabContent, tabBtns;
@@ -101,35 +96,36 @@
             evt.currentTarget.className += " active";
         }
 
-        // Function para makuha ang location ng user at mag-open ng directions patungong Foro de Intramuros
-        function getDirections() {
-            const statusText = document.getElementById("location-status");
-            const destination = "Foro de Intramuros, Calle Arzobispo corner Anda St, Manila";
-            
+        const destination = "Foro de Intramuros, Calle Arzobispo corner Anda St, Manila";
+
+        // Kapag naglagay ng text location ang user at nag-click ng "Go"
+        function startCustomNavigation() {
+            const originInput = document.getElementById("user-location-input").value;
+            if(!originInput) {
+                alert("Mangyaring ilagay ang iyong lokasyon o munisipyo.");
+                return;
+            }
+            // Magbubukas ang Google Maps direkta sa rurok ng kanilang biyahe papunta sa event
+            const url = `https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(originInput)}&destination=${encodeURIComponent(destination)}`;
+            window.open(url, '_blank');
+        }
+
+        // Kapag pinindot ang GPS button para awtomatikong makuha ang kinaroroonan
+        function getMyCurrentLocation() {
             if (navigator.geolocation) {
-                statusText.innerText = "Kinukuha ang iyong lokasyon...";
                 navigator.geolocation.getCurrentPosition(
                     (position) => {
                         const lat = position.coords.latitude;
                         const lng = position.coords.longitude;
-                        statusText.innerText = "Tagumpay! Binubuksan ang direksyon...";
-                        
-                        // Bubuksan ang Google Maps directions mula sa lat/lng ng user papunta sa Foro de Intramuros
-                        const mapsUrl = `https://www.google.com/maps/dir/?api=1&origin=${lat},${lng}&destination=${encodeURIComponent(destination)}`;
-                        window.open(mapsUrl, '_blank');
+                        const url = `https://www.google.com/maps/dir/?api=1&origin=${lat},${lng}&destination=${encodeURIComponent(destination)}`;
+                        window.open(url, '_blank');
                     },
                     (error) => {
-                        statusText.innerText = "Hindi makuha ang lokasyon. Binubuksan ang destinasyon...";
-                        // Fallback kung sakaling i-block ng user ang GPS permission
-                        const fallbackUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(destination)}`;
-                        window.open(fallbackUrl, '_blank');
-                    },
-                    { timeout: 10000 }
+                        alert("Hindi makuha ang GPS. Subukang i-type ang iyong lokasyon sa kahon.");
+                    }
                 );
             } else {
-                // Kung hindi supported ng browser
-                const fallbackUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(destination)}`;
-                window.open(fallbackUrl, '_blank');
+                alert("Hindi sinusuportahan ng iyong browser ang geolocation.");
             }
         }
     </script>
