@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Imbitasyon sa Foro de Intramuros</title>
     <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts para sa Historic Look -->
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -13,6 +14,12 @@
         <header>
             <h1>Kasaysayan at Pagdiriwang</h1>
             <p class="sub-title">Foro de Intramuros • Calle Arzobispo corner Anda St., Manila</p>
+            <!-- Idinagdag ang Petsa at Oras -->
+            <div class="event-schedule" style="margin-top: 15px; padding: 10px; border-top: 1px solid #8c6d46; border-bottom: 1px solid #8c6d46; display: inline-block;">
+                <p style="font-family: 'Cinzel', serif; font-size: 1.1rem; font-weight: bold; color: #594228; margin: 0;">
+                    📅 DECEMBER 14, 2026 &nbsp;|&nbsp; LUNES &nbsp;|&nbsp; ⏰ 6:00 PM
+                </p>
+            </div>
         </header>
 
         <!-- Navigation Tabs -->
@@ -46,16 +53,21 @@
             <div class="gallery-section">
                 <h3>Anyo ng Paligid at Event Place</h3>
                 <div class="image-grid">
+                    <!-- Larawan 1: Harapan / Exterior -->
                     <div class="img-card">
-                        <img src="front.jpg" alt="Foro de Intramuros Exterior">[cite: 1]
+                        <img src="front.jpg" alt="Foro de Intramuros Exterior">[front]
                         <p>Klasikong Harapan ng Gusali</p>
                     </div>
+                    
+                    <!-- Larawan 2: Loob / Interior -->
                     <div class="img-card">
-                        <img src="side.jpg" alt="Foro de Intramuros Interior">[cite: 2]
+                        <img src="side.jpg" alt="Foro de Intramuros Interior">[side]
                         <p>Bulwagan at Liwanag sa Loob</p>
                     </div>
+
+                    <!-- Larawan 3: Aerial View -->
                     <div class="img-card" style="width: 100%;">
-                        <img src="top.jpg" alt="Foro de Intramuros Aerial View" style="height: 280px;">[cite: 3]
+                        <img src="top.jpg" alt="Foro de Intramuros Aerial View" style="height: 280px;">[top]
                         <p>Kabuuan ng Lugar (Aerial View)</p>
                     </div>
                 </div>
@@ -69,8 +81,9 @@
             
             <div class="image-grid">
                 <div class="img-card" style="width: 100%;">
+                    <!-- Ginamit ang samplepic.jfif para sa kasuotan -->
                     <img src="samplepic.jpg" alt="Historic Event Attire Style" style="height: 450px; object-fit: contain; background: #fff;">[cite: 6]
-                    <p>Barong Tagalog, Filipiniana, at iba pang Historic / Vintage Look[cite: 6]</p>
+                    <p>Barong Tagalog, Filipiniana, at iba pang Historic / Vintage Look[sample na kasuotan]</p>
                 </div>
             </div>
         </div>
@@ -105,7 +118,6 @@
                 alert("Mangyaring ilagay ang iyong lokasyon o munisipyo.");
                 return;
             }
-            // Magbubukas ang Google Maps direkta sa rurok ng kanilang biyahe papunta sa event
             const url = `https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(originInput)}&destination=${encodeURIComponent(destination)}`;
             window.open(url, '_blank');
         }
