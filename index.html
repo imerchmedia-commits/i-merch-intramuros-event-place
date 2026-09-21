@@ -36,7 +36,7 @@
             </div>
         </header>
 
-        <!-- Navigation Tabs (Nadagdagan ng Summary Tab) -->
+        <!-- Navigation Tabs -->
         <div class="tab-buttons">
             <button class="tab-btn active" onclick="openTab(event, 'mapTab')">Mapa at Event Place</button>
             <button class="tab-btn" onclick="openTab(event, 'attireTab')">Gabay sa Kasuotan</button>
@@ -133,7 +133,7 @@
             <div class="chart-container-box">
                 <h3>📈 Bilang ng mga Bisita kada Siyudad/Lugar</h3>
                 <div id="city-bar-chart" class="bar-chart">
-                    <!-- Dynamic Bar Graph makakaltok dito -->
+                    <!-- Dynamic Bar Graph -->
                 </div>
             </div>
             
@@ -147,7 +147,7 @@
         </footer>
     </div>
 
-    <!-- Karagdagang CSS para sa Mobile Optimization at Bar Graph -->
+    <!-- CSS -->
     <style>
         .logo-section { text-align: center; margin: 15px 0; padding: 5px; }
         .site-branding-logo { max-width: 180px; height: auto; display: block; margin: 0 auto; filter: sepia(15%) contrast(105%); }
@@ -172,84 +172,18 @@
         .attire-card-container { background: #fff; padding: 10px; border-radius: 4px; border: 1px solid #8c6d46; }
         .attire-img-fixed { width: 100% !important; height: auto !important; max-height: 500px !important; object-fit: contain !important; display: block !important; margin: 0 auto !important; background: #fff !important; }
 
-        /* Estilo para sa Summary / Analytics tab */
-        .stats-counter-box {
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-bottom: 20px;
-        }
-        .stat-card {
-            background: rgba(255, 248, 230, 0.95);
-            border: 1px solid #8c6d46;
-            border-radius: 6px;
-            padding: 15px;
-            min-width: 200px;
-            text-align: center;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-        }
-        .stat-card h3 {
-            font-family: 'Cinzel', serif;
-            font-size: 0.9rem;
-            color: #594228;
-            margin-bottom: 8px;
-        }
-        #total-visitors-count {
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: #2b1d0c;
-            margin: 0;
-            font-family: 'Cinzel', serif;
-        }
-        .chart-container-box {
-            background: rgba(255, 248, 230, 0.95);
-            border: 1px solid #8c6d46;
-            border-radius: 6px;
-            padding: 20px;
-            margin-top: 15px;
-        }
-        .chart-container-box h3 {
-            font-family: 'Cinzel', serif;
-            font-size: 1rem;
-            color: #594228;
-            margin-bottom: 15px;
-            text-align: center;
-        }
-        /* Bar Graph Styling */
-        .bar-chart {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-        .bar-item {
-            display: flex;
-            flex-direction: column;
-            gap: 3px;
-        }
-        .bar-label-row {
-            display: flex;
-            justify-content: space-between;
-            font-size: 0.85rem;
-            font-family: 'Playfair Display', serif;
-            color: #4a3b32;
-            font-weight: bold;
-        }
-        .bar-track {
-            background: #e6dfcc;
-            border-radius: 4px;
-            height: 20px;
-            width: 100%;
-            overflow: hidden;
-            border: 1px solid #c7b299;
-        }
-        .bar-fill {
-            background: #8c6d46;
-            height: 100%;
-            width: 0%;
-            transition: width 0.6s ease;
-            border-radius: 3px 0 0 3px;
-        }
+        .stats-counter-box { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; margin-bottom: 20px; }
+        .stat-card { background: rgba(255, 248, 230, 0.95); border: 1px solid #8c6d46; border-radius: 6px; padding: 15px; min-width: 200px; text-align: center; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+        .stat-card h3 { font-family: 'Cinzel', serif; font-size: 0.9rem; color: #594228; margin-bottom: 8px; }
+        #total-visitors-count { font-size: 1.8rem; font-weight: bold; color: #2b1d0c; margin: 0; font-family: 'Cinzel', serif; }
+        .chart-container-box { background: rgba(255, 248, 230, 0.95); border: 1px solid #8c6d46; border-radius: 6px; padding: 20px; margin-top: 15px; }
+        .chart-container-box h3 { font-family: 'Cinzel', serif; font-size: 1rem; color: #594228; margin-bottom: 15px; text-align: center; }
+        
+        .bar-chart { display: flex; flex-direction: column; gap: 10px; }
+        .bar-item { display: flex; flex-direction: column; gap: 3px; }
+        .bar-label-row { display: flex; justify-content: space-between; font-size: 0.85rem; font-family: 'Playfair Display', serif; color: #4a3b32; font-weight: bold; }
+        .bar-track { background: #e6dfcc; border-radius: 4px; height: 20px; width: 100%; overflow: hidden; border: 1px solid #c7b299; }
+        .bar-fill { background: #8c6d46; height: 100%; width: 0%; transition: width 0.6s ease; border-radius: 3px 0 0 3px; }
 
         @media screen and (max-width: 480px) {
             #user-location-input { width: 100%; }
@@ -261,16 +195,13 @@
         }
     </style>
 
-    <!-- Leaflet JS para sa Interactive Map -->
+    <!-- Leaflet JS -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
-    <!-- JavaScript para sa Analytics, Tabs, Live Clock, at Routing -->
+    <!-- JavaScript -->
     <script>
-        // --- ANALYTICS / TRACKING SYSTEM ---
         function trackVisitor() {
             let visitors = JSON.parse(localStorage.getItem('foro_visitors') || '[]');
-            
-            // Tukuyin ang uri ng device gamit ang User Agent
             const ua = navigator.userAgent;
             let deviceType = "Desktop / Laptop";
             if (/android/i.test(ua)) {
@@ -281,7 +212,6 @@
                 deviceType = "Iba pang Mobile Phone";
             }
 
-            // Suriin kung bagong session o iisang visitor lang ngayong araw (para di mag-double count sa bawat click)
             const sessionChecked = sessionStorage.getItem('foro_tracked');
             if (!sessionChecked) {
                 visitors.push({
@@ -291,13 +221,11 @@
                 localStorage.setItem('foro_visitors', JSON.stringify(visitors));
                 sessionStorage.setItem('foro_tracked', 'true');
             }
-            
             updateAnalyticsDisplay();
         }
 
         function trackUserCity(cityName) {
             if(!cityName) return;
-            // Linisin ang pangalan ng siyudad (capitalize first letter, lowercase the rest)
             let formattedCity = cityName.trim().toLowerCase();
             formattedCity = formattedCity.charAt(0).toUpperCase() + formattedCity.slice(1);
 
@@ -309,11 +237,9 @@
         }
 
         function updateAnalyticsDisplay() {
-            // 1. Bilang ng Bisita
             let visitors = JSON.parse(localStorage.getItem('foro_visitors') || '[]');
             document.getElementById('total-visitors-count').innerText = visitors.length;
 
-            // 2. Breakdown ng Device
             let deviceCounts = {};
             visitors.forEach(v => {
                 deviceCounts[v.device] = (deviceCounts[v.device] || 0) + 1;
@@ -328,7 +254,6 @@
             }
             document.getElementById('device-breakdown-list').innerHTML = deviceListHtml;
 
-            // 3. Bar Graph para sa Siyudad
             let cityData = JSON.parse(localStorage.getItem('foro_cities') || '{}');
             let chartContainer = document.getElementById('city-bar-chart');
             chartContainer.innerHTML = '';
@@ -362,16 +287,24 @@
             }
         }
 
+        // --- PASSWORD PROTECTED RESET FUNCTION ---
         function clearAnalyticsData() {
-            if(confirm("Sigurado ka bang gusto mong burahin ang lahat ng nakolektang data ng mga gumagamit?")) {
+            let enteredPassword = prompt("I-enter ang password para i-reset ang analytics data:");
+            
+            if (enteredPassword === null) {
+                return; // Pinindot ang Cancel
+            }
+
+            if (enteredPassword === "Imerch2026@") {
                 localStorage.removeItem('foro_visitors');
                 localStorage.removeItem('foro_cities');
                 updateAnalyticsDisplay();
-                alert("Na-reset na ang analytics data.");
+                alert("Tagumpay! Na-reset na ang analytics data.");
+            } else {
+                alert("Maling password! Hindi mo maaaring i-reset ang data na ito.");
             }
         }
 
-        // --- CLOCK & TABS ---
         function updateLiveClock() {
             const now = new Date();
             const optionsDate = { weekday: 'long', year: 'numeric', month: 'short', day: 'numeric' };
@@ -409,7 +342,6 @@
             }
         }
 
-        // --- MAP & ROUTING SYSTEM ---
         const destLat = 14.5919935;
         const destLng = 120.9723554;
 
@@ -436,7 +368,6 @@
                 return;
             }
 
-            // I-rekord sa ating city analytics ang nilagay ng user
             trackUserCity(query);
 
             fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(query + ", Philippines")}`)
@@ -532,7 +463,6 @@
             }, 300);
         }
 
-        // Patakbuhin ang visitor tracking kapag na-load ang page
         window.onload = function() {
             updateLiveClock();
             trackVisitor();
