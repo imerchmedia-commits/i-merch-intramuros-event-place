@@ -18,7 +18,6 @@
             <h1>Kasaysayan at Pagdiriwang</h1>
             <p class="sub-title">Foro de Intramuros • Calle Arzobispo corner Anda St., Manila</p>
             
-            <!-- NAIDAGDAG NA LOGO SA ITAAS -->
             <div class="logo-section">
                 <img src="imerchlogo.png" alt="i-Merch Media Logo" class="site-branding-logo">
             </div>
@@ -37,26 +36,27 @@
             </div>
         </header>
 
-        <!-- Navigation Tabs -->
+        <!-- Navigation Tabs (Nadagdagan ng Summary Tab) -->
         <div class="tab-buttons">
             <button class="tab-btn active" onclick="openTab(event, 'mapTab')">Mapa at Event Place</button>
             <button class="tab-btn" onclick="openTab(event, 'attireTab')">Gabay sa Kasuotan</button>
+            <button class="tab-btn" onclick="openTab(event, 'summaryTab')">📊 User Summary</button>
         </div>
 
         <!-- TAB 1: Map & Event Place Pictures -->
         <div id="mapTab" class="tab-content active">
             <h2>Gabay Patungo sa Himpilan</h2>
-            <p>Ilagay ang iyong lokasyon o i-click ang GPS upang makita ang direktang ruta sa mismong mapa sa ibaba!</p>
+            <p>Ilagay ang iyong lokasyon (Siyudad/Bayan) o i-click ang GPS upang makita ang direktang ruta sa mismong mapa sa ibaba!</p>
             
-            <!-- Form para sa paglalagay ng sariling lokasyon (Mobile Friendly Layout) -->
+            <!-- Form para sa paglalagay ng sariling lokasyon -->
             <div class="nav-control-box">
-                <input type="text" id="user-location-input" placeholder="Hal. Quiapo, Manila o Tondo">
+                <input type="text" id="user-location-input" placeholder="Hal. Manila, Quezon City o Makati">
                 <button onclick="calculateAndShowRoute()" class="waze-btn">Maglakbay (Go)</button>
                 <button onclick="getMyCurrentLocation()" class="waze-btn gps-btn">📍 Gamitin ang Aking GPS Location</button>
                 <button id="simulate-btn" onclick="startMovementSimulation()" class="waze-btn simulate-btn" style="display:none;">🚗 Simulan ang Paggalaw (Go!)</button>
             </div>
 
-            <!-- MISMONG MAPA SA LOOB NG SITE (Leaflet Interactive Map) -->
+            <!-- MISMONG MAPA SA LOOB NG SITE -->
             <div class="map-wrapper">
                 <div id="site-leaflet-map"></div>
             </div>
@@ -64,19 +64,14 @@
             <div class="gallery-section">
                 <h3>Anyo ng Paligid at Event Place</h3>
                 <div class="image-grid">
-                    <!-- Larawan 1: Harapan / Exterior -->
                     <div class="img-card">
                         <img src="front.jpg" alt="Foro de Intramuros Exterior">
                         <p>Klasikong Harapan ng Gusali</p>
                     </div>
-                    
-                    <!-- Larawan 2: Loob / Interior -->
                     <div class="img-card">
                         <img src="side.jpg" alt="Foro de Intramuros Interior">
                         <p>Bulwagan at Liwanag sa Loob</p>
                     </div>
-
-                    <!-- Larawan 3: Aerial View -->
                     <div class="img-card full-width-card">
                         <img src="top.jpg" alt="Foro de Intramuros Aerial View" class="aerial-img">
                         <p>Kabuuan ng Lugar (Aerial View)</p>
@@ -90,20 +85,17 @@
                 <p>
                     Ang <strong>Foro de Intramuros</strong>, na matatagpuan sa Calle Arzobispo sa makasaysayang napapaderang lungsod ng Maynila, ay isang modernong sentro ng kombensiyon at pangkultura na itinayo sa ibabaw ng makasaysayang dating lupain ng Ateneo de Manila[cite: 3].
                 </p>
-
                 <h4>Panahon ng mga Heswita at ang Ateneo de Manila (1859–1941)</h4>
                 <p>
-                    Ang lugar sa Calle Arzobispo ay bahagi noon ng malawak na bloke ng lunsod na pag-ari ng orden ng mga Heswita[cite: 3]. Mula 1859 hanggang 1941, nagsilbi itong orihinal na tahanan ng Ateneo Municipal de Manila (na kalaunang pinangalanang Ateneo de Manila University)[cite: 3]. Itinampok sa makasaysayang kampus na ito ang isang marangya at masining na pangunahing pasukan na nililok ng kilalang Pilipinong eskultor na si Isabelo Tampinco[cite: 3].
+                    Ang lugar sa Calle Arzobispo ay bahagi noon ng malawak na bloke ng lunsod na pag-ari ng orden ng mga Heswita[cite: 3]. Mula 1859 hanggang 1941, nagsilbi itong orihinal na tahanan ng Ateneo Municipal de Manila[cite: 3].
                 </p>
-
                 <h4>Pagkasira dahil sa Sunog at Digmaan (1932–1945)</h4>
                 <p>
-                    Naranasan ng kampus ang isang trahedya noong gabi ng Agosto 13, 1932, nang lumaganap ang isang malaking sunog sa distrito at tuluyang nilamon ang mga pangunahing gusali ng paaralan[cite: 3]. Dahil dito, napilitang lumipat ang institusyon sa Padre Faura sa Ermita para sa kanilang sentral na operasyon[cite: 3]. Bagama't itinayong muli ang kampus noong 1941 upang pansamantalang magsilbing tahanan ng mababang paaralan ng Ateneo, ito ay lubusang nawasak makalipas ang ilang panahon sa gitna ng mapaminsalang Labanan sa Maynila noong 1945[cite: 3].
+                    Naranasan ng kampus ang isang trahedya noong gabi ng Agosto 13, 1932, nang lumaganap ang isang malaking sunog[cite: 3]. Ito ay lubusang nawasak makalipas ang ilang panahon sa gitna ng Labanan sa Maynila noong 1945[cite: 3].
                 </p>
-
                 <h4>Modernong Pagbabago at Pagbangon (2024–Kasalukuyan)</h4>
                 <p>
-                    Matapos ang panahon ng Clamshell, nanatiling hindi gaanong nagagamit ang lugar hanggang sa pasimulan ng pamahalaan ang isang malaking proyektong pang-revitalisasyon[cite: 3]. Natapos noong 2024, ang espasyo ay ginawang Foro de Intramuros, isang modernong nakasaradong sentro ng kombensiyon[cite: 3]. Ang arkitekturang pumapalibot sa lugar ay dinisenyo upang magbigay-pugay sa makasaysayang harapan ng lumang paaralan ng mga Heswita, na nagtatampok ng mga ginayang palamuti at ang ikonikong portiko sa pagtanggap na hango sa minsang sumalubong sa mga makasaysayang tauhan tulad ni José Rizal[cite: 3].
+                    Natapos noong 2024, ang espasyo ay ginawang Foro de Intramuros, isang modernong nakasaradong sentro ng kombensiyon na nagbibigay-pugay sa kasaysayan[cite: 3].
                 </p>
             </div>
         </div>
@@ -112,12 +104,41 @@
         <div id="attireTab" class="tab-content" style="display:none;">
             <h2>Kasuotang Pilipino / Historic Style</h2>
             <p>Upang mas maging angkop sa ating temang makasaysayan, hinihimok ang lahat na dumalo suot ang mga sumusunod na istilo:</p>
-            
             <div class="image-grid">
                 <div class="img-card full-width-card attire-card-container">
                     <img src="samplepic.jpg" alt="Historic Event Attire Style" class="attire-img-fixed">
-                    <p>Barong Tagalog, Filipiniana, at iba pang Historic / Vintage Look</p>
+                    <p>Barong Tagalog, Filipiniana, at iba pang Historic / Vintage Look[cite: 3]</p>
                 </div>
+            </div>
+        </div>
+
+        <!-- TAB 3: User Summary & Analytics -->
+        <div id="summaryTab" class="tab-content" style="display:none;">
+            <h2>📊 Buod ng mga Gumagamit ng Site</h2>
+            <p>Dito makikita ang kabuuang bilang ng mga bumisita, ang uri ng telepono/device na kanilang ginamit, at ang graph ng mga siyudad kung saan sila nagmula.</p>
+            
+            <div class="stats-counter-box">
+                <div class="stat-card">
+                    <h3>Kabuuang Bisita</h3>
+                    <p id="total-visitors-count">0</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Uri ng Device na Ginamit</h3>
+                    <ul id="device-breakdown-list" style="list-style-type: none; padding: 0; text-align: left; font-size: 0.9rem;">
+                        <!-- Dynamic content -->
+                    </ul>
+                </div>
+            </div>
+
+            <div class="chart-container-box">
+                <h3>📈 Bilang ng mga Bisita kada Siyudad/Lugar</h3>
+                <div id="city-bar-chart" class="bar-chart">
+                    <!-- Dynamic Bar Graph makakaltok dito -->
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 20px;">
+                <button onclick="clearAnalyticsData()" class="waze-btn" style="background-color: #a93226; font-size: 0.75rem;">I-reset ang Data ng Analytics</button>
             </div>
         </div>
 
@@ -126,188 +147,231 @@
         </footer>
     </div>
 
-    <!-- Karagdagang CSS para sa Mobile Optimization, Layout, at Fixed Attire Image -->
+    <!-- Karagdagang CSS para sa Mobile Optimization at Bar Graph -->
     <style>
-        .logo-section {
-            text-align: center;
-            margin: 15px 0;
-            padding: 5px;
-        }
-        .site-branding-logo {
-            max-width: 180px;
-            height: auto;
-            display: block;
-            margin: 0 auto;
-            filter: sepia(15%) contrast(105%);
-        }
+        .logo-section { text-align: center; margin: 15px 0; padding: 5px; }
+        .site-branding-logo { max-width: 180px; height: auto; display: block; margin: 0 auto; filter: sepia(15%) contrast(105%); }
+        .schedule-clock-wrapper { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 15px; }
+        .live-clock-container { padding: 6px 12px; background: rgba(255, 248, 230, 0.9); border: 1px dashed #8c6d46; border-radius: 4px; text-align: center; }
+        .clock-label { font-family: 'Playfair Display', serif; font-size: 0.8rem; color: #614e3b; display: block; }
+        #live-clock { font-family: 'Cinzel', serif; font-size: 0.95rem; font-weight: bold; color: #594228; }
+        .event-schedule { padding: 6px 12px; border: 1px solid #8c6d46; border-radius: 4px; background: rgba(255, 248, 230, 0.9); display: flex; align-items: center; justify-content: center; }
+        .schedule-text { font-family: 'Cinzel', serif; font-size: 0.9rem; font-weight: bold; color: #594228; margin: 0; word-break: break-word; }
+        .nav-control-box { margin-bottom: 15px; text-align: center; }
+        #user-location-input { padding: 10px; width: 70%; max-width: 300px; border: 1px solid #8c6d46; background: #fdfbf7; font-family: 'Playfair Display', serif; font-size: 1rem; border-radius: 4px; margin-bottom: 8px; }
+        .waze-btn { background-color: #8c6d46; color: #f4ebd0; border: 2px solid #594228; padding: 10px 15px; font-family: 'Cinzel', serif; font-size: 0.85rem; font-weight: bold; cursor: pointer; border-radius: 4px; margin: 3px; transition: all 0.3s ease; }
+        .gps-btn { background-color: #594228; }
+        .simulate-btn { background-color: #2e5939; }
+        #site-leaflet-map { width: 100%; height: 350px; border: 2px solid #8c6d46; border-radius: 4px; }
+        .full-width-card { width: 100% !important; }
+        .aerial-img { width: 100%; height: 220px; object-fit: cover; }
+        .history-section { margin-top: 30px; padding-top: 20px; border-top: 2px dashed #bfa181; text-align: justify; }
+        .history-section h3 { text-align: center; margin-bottom: 15px; color: #2b1d0c; }
+        .history-section h4 { font-family: 'Cinzel', serif; color: #594228; margin-top: 20px; margin-bottom: 8px; font-size: 1.05rem; }
+        .history-section p { font-size: 0.95rem; line-height: 1.6; color: #4a3b32; margin-bottom: 12px; }
+        .attire-card-container { background: #fff; padding: 10px; border-radius: 4px; border: 1px solid #8c6d46; }
+        .attire-img-fixed { width: 100% !important; height: auto !important; max-height: 500px !important; object-fit: contain !important; display: block !important; margin: 0 auto !important; background: #fff !important; }
 
-        .schedule-clock-wrapper {
+        /* Estilo para sa Summary / Analytics tab */
+        .stats-counter-box {
             display: flex;
-            flex-wrap: wrap;
+            gap: 15px;
             justify-content: center;
-            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+        .stat-card {
+            background: rgba(255, 248, 230, 0.95);
+            border: 1px solid #8c6d46;
+            border-radius: 6px;
+            padding: 15px;
+            min-width: 200px;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .stat-card h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 0.9rem;
+            color: #594228;
+            margin-bottom: 8px;
+        }
+        #total-visitors-count {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #2b1d0c;
+            margin: 0;
+            font-family: 'Cinzel', serif;
+        }
+        .chart-container-box {
+            background: rgba(255, 248, 230, 0.95);
+            border: 1px solid #8c6d46;
+            border-radius: 6px;
+            padding: 20px;
             margin-top: 15px;
         }
-        
-        .live-clock-container {
-            padding: 6px 12px;
-            background: rgba(255, 248, 230, 0.9);
-            border: 1px dashed #8c6d46;
-            border-radius: 4px;
-            text-align: center;
-        }
-        .clock-label {
-            font-family: 'Playfair Display', serif;
-            font-size: 0.8rem;
-            color: #614e3b;
-            display: block;
-        }
-        #live-clock {
+        .chart-container-box h3 {
             font-family: 'Cinzel', serif;
-            font-size: 0.95rem;
-            font-weight: bold;
-            color: #594228;
-        }
-
-        .event-schedule {
-            padding: 6px 12px; 
-            border: 1px solid #8c6d46; 
-            border-radius: 4px;
-            background: rgba(255, 248, 230, 0.9);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .schedule-text {
-            font-family: 'Cinzel', serif; 
-            font-size: 0.9rem; 
-            font-weight: bold; 
-            color: #594228; 
-            margin: 0;
-            word-break: break-word;
-        }
-
-        .nav-control-box {
-            margin-bottom: 15px; 
-            text-align: center;
-        }
-        #user-location-input {
-            padding: 10px; 
-            width: 70%; 
-            max-width: 300px;
-            border: 1px solid #8c6d46; 
-            background: #fdfbf7; 
-            font-family: 'Playfair Display', serif;
             font-size: 1rem;
-            border-radius: 4px;
-            margin-bottom: 8px;
-        }
-        .waze-btn {
-            background-color: #8c6d46;
-            color: #f4ebd0;
-            border: 2px solid #594228;
-            padding: 10px 15px;
-            font-family: 'Cinzel', serif;
-            font-size: 0.85rem;
-            font-weight: bold;
-            cursor: pointer;
-            border-radius: 4px;
-            margin: 3px;
-            transition: all 0.3s ease;
-        }
-        .gps-btn {
-            background-color: #594228;
-        }
-        .simulate-btn {
-            background-color: #2e5939;
-        }
-
-        #site-leaflet-map {
-            width: 100%; 
-            height: 350px; 
-            border: 2px solid #8c6d46; 
-            border-radius: 4px;
-        }
-
-        .full-width-card {
-            width: 100% !important;
-        }
-        .aerial-img {
-            width: 100%;
-            height: 220px; 
-            object-fit: cover;
-        }
-
-        /* Estilo para sa Seksyon ng Kasaysayan */
-        .history-section {
-            margin-top: 30px;
-            padding-top: 20px;
-            border-top: 2px dashed #bfa181;
-            text-align: justify;
-        }
-        .history-section h3 {
-            text-align: center;
-            margin-bottom: 15px;
-            color: #2b1d0c;
-        }
-        .history-section h4 {
-            font-family: 'Cinzel', serif;
             color: #594228;
-            margin-top: 20px;
-            margin-bottom: 8px;
-            font-size: 1.05rem;
+            margin-bottom: 15px;
+            text-align: center;
         }
-        .history-section p {
-            font-size: 0.95rem;
-            line-height: 1.6;
+        /* Bar Graph Styling */
+        .bar-chart {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .bar-item {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+        .bar-label-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            font-family: 'Playfair Display', serif;
             color: #4a3b32;
-            margin-bottom: 12px;
+            font-weight: bold;
         }
-
-        .attire-card-container {
-            background: #fff;
-            padding: 10px;
+        .bar-track {
+            background: #e6dfcc;
             border-radius: 4px;
-            border: 1px solid #8c6d46;
+            height: 20px;
+            width: 100%;
+            overflow: hidden;
+            border: 1px solid #c7b299;
         }
-        .attire-img-fixed {
-            width: 100% !important;
-            height: auto !important;
-            max-height: 500px !important;
-            object-fit: contain !important; 
-            display: block !important;
-            margin: 0 auto !important;
-            background: #fff !important;
+        .bar-fill {
+            background: #8c6d46;
+            height: 100%;
+            width: 0%;
+            transition: width 0.6s ease;
+            border-radius: 3px 0 0 3px;
         }
 
         @media screen and (max-width: 480px) {
-            #user-location-input {
-                width: 100%;
-            }
-            .waze-btn {
-                width: 100%;
-                margin: 5px 0;
-            }
-            header h1 {
-                font-size: 1.4rem;
-            }
-            .sub-title {
-                font-size: 0.8rem;
-            }
-            .schedule-text {
-                font-size: 0.75rem;
-            }
-            .attire-img-fixed {
-                max-height: 320px !important;
-            }
+            #user-location-input { width: 100%; }
+            .waze-btn { width: 100%; margin: 5px 0; }
+            header h1 { font-size: 1.4rem; }
+            .sub-title { font-size: 0.8rem; }
+            .schedule-text { font-size: 0.75rem; }
+            .attire-img-fixed { max-height: 320px !important; }
         }
     </style>
 
     <!-- Leaflet JS para sa Interactive Map -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
-    <!-- JavaScript para sa Tabs, Live Clock, at Routing / Simulation -->
+    <!-- JavaScript para sa Analytics, Tabs, Live Clock, at Routing -->
     <script>
+        // --- ANALYTICS / TRACKING SYSTEM ---
+        function trackVisitor() {
+            let visitors = JSON.parse(localStorage.getItem('foro_visitors') || '[]');
+            
+            // Tukuyin ang uri ng device gamit ang User Agent
+            const ua = navigator.userAgent;
+            let deviceType = "Desktop / Laptop";
+            if (/android/i.test(ua)) {
+                deviceType = "Android Phone";
+            } else if (/iphone|ipad|ipod/i.test(ua)) {
+                deviceType = "iPhone / iOS";
+            } else if (/mobile/i.test(ua)) {
+                deviceType = "Iba pang Mobile Phone";
+            }
+
+            // Suriin kung bagong session o iisang visitor lang ngayong araw (para di mag-double count sa bawat click)
+            const sessionChecked = sessionStorage.getItem('foro_tracked');
+            if (!sessionChecked) {
+                visitors.push({
+                    device: deviceType,
+                    date: new Date().toISOString()
+                });
+                localStorage.setItem('foro_visitors', JSON.stringify(visitors));
+                sessionStorage.setItem('foro_tracked', 'true');
+            }
+            
+            updateAnalyticsDisplay();
+        }
+
+        function trackUserCity(cityName) {
+            if(!cityName) return;
+            // Linisin ang pangalan ng siyudad (capitalize first letter, lowercase the rest)
+            let formattedCity = cityName.trim().toLowerCase();
+            formattedCity = formattedCity.charAt(0).toUpperCase() + formattedCity.slice(1);
+
+            let cityData = JSON.parse(localStorage.getItem('foro_cities') || '{}');
+            cityData[formattedCity] = (cityData[formattedCity] || 0) + 1;
+            localStorage.setItem('foro_cities', JSON.stringify(cityData));
+
+            updateAnalyticsDisplay();
+        }
+
+        function updateAnalyticsDisplay() {
+            // 1. Bilang ng Bisita
+            let visitors = JSON.parse(localStorage.getItem('foro_visitors') || '[]');
+            document.getElementById('total-visitors-count').innerText = visitors.length;
+
+            // 2. Breakdown ng Device
+            let deviceCounts = {};
+            visitors.forEach(v => {
+                deviceCounts[v.device] = (deviceCounts[v.device] || 0) + 1;
+            });
+
+            let deviceListHtml = '';
+            for (let dev in deviceCounts) {
+                deviceListHtml += `<li>• ${dev}: <strong>${deviceCounts[dev]}</strong></li>`;
+            }
+            if(Object.keys(deviceCounts).length === 0) {
+                deviceListHtml = '<li>Wala pang naitalang bisita.</li>';
+            }
+            document.getElementById('device-breakdown-list').innerHTML = deviceListHtml;
+
+            // 3. Bar Graph para sa Siyudad
+            let cityData = JSON.parse(localStorage.getItem('foro_cities') || '{}');
+            let chartContainer = document.getElementById('city-bar-chart');
+            chartContainer.innerHTML = '';
+
+            let maxVal = 1;
+            for (let city in cityData) {
+                if (cityData[city] > maxVal) maxVal = cityData[city];
+            }
+
+            let hasCity = false;
+            for (let city in cityData) {
+                hasCity = true;
+                let count = cityData[city];
+                let percentage = (count / maxVal) * 100;
+
+                chartContainer.innerHTML += `
+                    <div class="bar-item">
+                        <div class="bar-label-row">
+                            <span>${city}</span>
+                            <span>${count} na naghanap</span>
+                        </div>
+                        <div class="bar-track">
+                            <div class="bar-fill" style="width: ${percentage}%;"></div>
+                        </div>
+                    </div>
+                `;
+            }
+
+            if (!hasCity) {
+                chartContainer.innerHTML = '<p style="text-align: center; font-size: 0.9rem; color: #614e3b; margin: 10px 0;">Wala pang nailalagay na lokasyon o siyudad mula sa paghahanap ng ruta.</p>';
+            }
+        }
+
+        function clearAnalyticsData() {
+            if(confirm("Sigurado ka bang gusto mong burahin ang lahat ng nakolektang data ng mga gumagamit?")) {
+                localStorage.removeItem('foro_visitors');
+                localStorage.removeItem('foro_cities');
+                updateAnalyticsDisplay();
+                alert("Na-reset na ang analytics data.");
+            }
+        }
+
+        // --- CLOCK & TABS ---
         function updateLiveClock() {
             const now = new Date();
             const optionsDate = { weekday: 'long', year: 'numeric', month: 'short', day: 'numeric' };
@@ -326,7 +390,6 @@
             document.getElementById("live-clock").innerText = `${dateString} | ${timeString}`;
         }
         setInterval(updateLiveClock, 1000);
-        window.onload = updateLiveClock;
 
         function openTab(evt, tabName) {
             let i, tabContent, tabBtns;
@@ -346,6 +409,7 @@
             }
         }
 
+        // --- MAP & ROUTING SYSTEM ---
         const destLat = 14.5919935;
         const destLng = 120.9723554;
 
@@ -368,9 +432,12 @@
         function calculateAndShowRoute() {
             const query = document.getElementById("user-location-input").value;
             if(!query) {
-                alert("Mangyaring ilagay ang iyong lokasyon o munisipyo.");
+                alert("Mangyaring ilagay ang iyong lokasyon o siyudad.");
                 return;
             }
+
+            // I-rekord sa ating city analytics ang nilagay ng user
+            trackUserCity(query);
 
             fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(query + ", Philippines")}`)
                 .then(response => response.json())
@@ -395,6 +462,7 @@
                         const userLat = position.coords.latitude;
                         const userLng = position.coords.longitude;
                         document.getElementById("user-location-input").value = "Aking GPS Location";
+                        trackUserCity("GPS / Kasalukuyang Posisyon");
                         drawRouteOnSite(userLat, userLng);
                     },
                     (error) => {
@@ -463,6 +531,12 @@
                 }
             }, 300);
         }
+
+        // Patakbuhin ang visitor tracking kapag na-load ang page
+        window.onload = function() {
+            updateLiveClock();
+            trackVisitor();
+        };
     </script>
 </body>
 </html>
