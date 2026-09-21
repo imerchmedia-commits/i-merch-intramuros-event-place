@@ -18,7 +18,7 @@
             <h1>Kasaysayan at Pagdiriwang</h1>
             <p class="sub-title">Foro de Intramuros • Calle Arzobispo corner Anda St., Manila</p>
             
-            <!-- NAIDAGDAG NA LOGO SA ITAAS (Pagkatapos ng Kasaysayan at Pagdiriwang) -->
+            <!-- NAIDAGDAG NA LOGO SA ITAAS -->
             <div class="logo-section">
                 <img src="imerchlogo.png" alt="i-Merch Media Logo" class="site-branding-logo">
             </div>
@@ -83,6 +83,29 @@
                     </div>
                 </div>
             </div>
+
+            <!-- SEKSYON NG KASAYSAYAN NG LUPAIN -->
+            <div class="history-section">
+                <h3>Kasaysayan ng Lupain</h3>
+                <p>
+                    Ang <strong>Foro de Intramuros</strong>, na matatagpuan sa Calle Arzobispo sa makasaysayang napapaderang lungsod ng Maynila, ay isang modernong sentro ng kombensiyon at pangkultura na itinayo sa ibabaw ng makasaysayang dating lupain ng Ateneo de Manila[cite: 3].
+                </p>
+
+                <h4>Panahon ng mga Heswita at ang Ateneo de Manila (1859–1941)</h4>
+                <p>
+                    Ang lugar sa Calle Arzobispo ay bahagi noon ng malawak na bloke ng lunsod na pag-ari ng orden ng mga Heswita[cite: 3]. Mula 1859 hanggang 1941, nagsilbi itong orihinal na tahanan ng Ateneo Municipal de Manila (na kalaunang pinangalanang Ateneo de Manila University)[cite: 3]. Itinampok sa makasaysayang kampus na ito ang isang marangya at masining na pangunahing pasukan na nililok ng kilalang Pilipinong eskultor na si Isabelo Tampinco[cite: 3].
+                </p>
+
+                <h4>Pagkasira dahil sa Sunog at Digmaan (1932–1945)</h4>
+                <p>
+                    Naranasan ng kampus ang isang trahedya noong gabi ng Agosto 13, 1932, nang lumaganap ang isang malaking sunog sa distrito at tuluyang nilamon ang mga pangunahing gusali ng paaralan[cite: 3]. Dahil dito, napilitang lumipat ang institusyon sa Padre Faura sa Ermita para sa kanilang sentral na operasyon[cite: 3]. Bagama't itinayong muli ang kampus noong 1941 upang pansamantalang magsilbing tahanan ng mababang paaralan ng Ateneo, ito ay lubusang nawasak makalipas ang ilang panahon sa gitna ng mapaminsalang Labanan sa Maynila noong 1945[cite: 3].
+                </p>
+
+                <h4>Modernong Pagbabago at Pagbangon (2024–Kasalukuyan)</h4>
+                <p>
+                    Matapos ang panahon ng Clamshell, nanatiling hindi gaanong nagagamit ang lugar hanggang sa pasimulan ng pamahalaan ang isang malaking proyektong pang-revitalisasyon[cite: 3]. Natapos noong 2024, ang espasyo ay ginawang Foro de Intramuros, isang modernong nakasaradong sentro ng kombensiyon[cite: 3]. Ang arkitekturang pumapalibot sa lugar ay dinisenyo upang magbigay-pugay sa makasaysayang harapan ng lumang paaralan ng mga Heswita, na nagtatampok ng mga ginayang palamuti at ang ikonikong portiko sa pagtanggap na hango sa minsang sumalubong sa mga makasaysayang tauhan tulad ni José Rizal[cite: 3].
+                </p>
+            </div>
         </div>
 
         <!-- TAB 2: Attire / Susuotin -->
@@ -92,7 +115,6 @@
             
             <div class="image-grid">
                 <div class="img-card full-width-card attire-card-container">
-                    <!-- Naayos ang CSS class para hindi ma-crop ang buong litrato ng kasuotan -->
                     <img src="samplepic.jpg" alt="Historic Event Attire Style" class="attire-img-fixed">
                     <p>Barong Tagalog, Filipiniana, at iba pang Historic / Vintage Look</p>
                 </div>
@@ -106,7 +128,6 @@
 
     <!-- Karagdagang CSS para sa Mobile Optimization, Layout, at Fixed Attire Image -->
     <style>
-        /* Estilo para sa Logo sa Itaas */
         .logo-section {
             text-align: center;
             margin: 15px 0;
@@ -117,7 +138,7 @@
             height: auto;
             display: block;
             margin: 0 auto;
-            filter: sepia(15%) contrast(105%); /* Nagbibigay ng bahagyang temang angkop sa lumang papel */
+            filter: sepia(15%) contrast(105%);
         }
 
         .schedule-clock-wrapper {
@@ -166,7 +187,6 @@
             word-break: break-word;
         }
 
-        /* Mobile-friendly adjustments para sa inputs at buttons */
         .nav-control-box {
             margin-bottom: 15px; 
             text-align: center;
@@ -202,7 +222,6 @@
             background-color: #2e5939;
         }
 
-        /* Sukat ng Leaflet Map para sa maliliit na screen ng cellphone */
         #site-leaflet-map {
             width: 100%; 
             height: 350px; 
@@ -219,7 +238,32 @@
             object-fit: cover;
         }
 
-        /* PINA-AYOS NA CSS PARA SA ATTIRE IMAGE (SAMPLEPIC.JPG) */
+        /* Estilo para sa Seksyon ng Kasaysayan */
+        .history-section {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px dashed #bfa181;
+            text-align: justify;
+        }
+        .history-section h3 {
+            text-align: center;
+            margin-bottom: 15px;
+            color: #2b1d0c;
+        }
+        .history-section h4 {
+            font-family: 'Cinzel', serif;
+            color: #594228;
+            margin-top: 20px;
+            margin-bottom: 8px;
+            font-size: 1.05rem;
+        }
+        .history-section p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #4a3b32;
+            margin-bottom: 12px;
+        }
+
         .attire-card-container {
             background: #fff;
             padding: 10px;
@@ -230,13 +274,12 @@
             width: 100% !important;
             height: auto !important;
             max-height: 500px !important;
-            object-fit: contain !important; /* Siguraduhing makikita nang buo ang litrato nang hindi na-crop */
+            object-fit: contain !important; 
             display: block !important;
             margin: 0 auto !important;
             background: #fff !important;
         }
 
-        /* Media Query para sa mas maliliit na screen (iPhone SE, Android small screens) */
         @media screen and (max-width: 480px) {
             #user-location-input {
                 width: 100%;
@@ -255,7 +298,7 @@
                 font-size: 0.75rem;
             }
             .attire-img-fixed {
-                max-height: 320px !important; /* Ibagay ang taas para sa maliliit na mobile screen */
+                max-height: 320px !important;
             }
         }
     </style>
@@ -265,29 +308,23 @@
 
     <!-- JavaScript para sa Tabs, Live Clock, at Routing / Simulation -->
     <script>
-        // Real-time 12-Hour Clock and Date Script
         function updateLiveClock() {
             const now = new Date();
-            
-            // Pormat ng Petsa (Hal. Monday, Sep 21, 2026)
             const optionsDate = { weekday: 'long', year: 'numeric', month: 'short', day: 'numeric' };
             const dateString = now.toLocaleDateString('en-US', optionsDate);
             
-            // Pormat ng Oras sa 12-Hour Format na may AM/PM
             let hours = now.getHours();
             const minutes = String(now.getMinutes()).padStart(2, '0');
             const seconds = String(now.getSeconds()).padStart(2, '0');
             const ampm = hours >= 12 ? 'PM' : 'AM';
             
             hours = hours % 12;
-            hours = hours ? hours : 12; // ang 0 ay magiging 12
+            hours = hours ? hours : 12;
             const hoursStr = String(hours).padStart(2, '0');
 
             const timeString = `${hoursStr}:${minutes}:${seconds} ${ampm}`;
-            
             document.getElementById("live-clock").innerText = `${dateString} | ${timeString}`;
         }
-        // Paganahin ang clock kada segundo
         setInterval(updateLiveClock, 1000);
         window.onload = updateLiveClock;
 
@@ -304,26 +341,21 @@
             document.getElementById(tabName).style.display = "block";
             evt.currentTarget.className += " active";
             
-            // I-refresh ang sukat ng mapa kapag lumipat ng tab para hindi masira ang itsura sa mobile
             if(tabName === 'mapTab') {
                 setTimeout(() => { map.invalidateSize(); }, 200);
             }
         }
 
-        // Koordinates ng Foro de Intramuros
         const destLat = 14.5919935;
         const destLng = 120.9723554;
 
-        // Pagsisimula ng Mapa sa Loob ng Website gamit ang Leaflet
         const map = L.map('site-leaflet-map').setView([destLat, destLng], 15);
 
-        // Pag-load ng Design ng Mapa (OpenStreetMap tiles)
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             maxZoom: 19,
             attribution: '&copy; OpenStreetMap contributors'
         }).addTo(map);
 
-        // Lagyan ng default pin ang Foro de Intramuros
         const destinationMarker = L.marker([destLat, destLng]).addTo(map)
             .bindPopup("<b>Foro de Intramuros</b><br>Calle Arzobispo corner Anda St., Manila")
             .openPopup();
@@ -333,7 +365,6 @@
         let currentRouteCoordinates = [];
         let simulationInterval = null;
 
-        // 1. Hanapin ang lat/lng ng tinype ng user gamit ang Nominatim Geocoder
         function calculateAndShowRoute() {
             const query = document.getElementById("user-location-input").value;
             if(!query) {
@@ -357,7 +388,6 @@
                 });
         }
 
-        // 2. Kunin ang eksaktong GPS location ng user sa pamamagitan ng Browser
         function getMyCurrentLocation() {
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(
@@ -376,17 +406,14 @@
             }
         }
 
-        // 3. I-drowing ang ruta sa mismong mapa at ihanda ang paggalaw
         function drawRouteOnSite(lat, lng) {
             if(routeLayer) map.removeLayer(routeLayer);
             if(movingMarker) map.removeLayer(movingMarker);
             if(simulationInterval) clearInterval(simulationInterval);
 
-            // Maglagay ng pin para sa User Origin
             const userMarker = L.marker([lat, lng]).addTo(map)
                 .bindPopup("Iyong Lokasyon").openPopup();
 
-            // Kunin ang direksyon gamit ang OSRM Routing API
             const osrmUrl = `https://router.project-osrm.org/route/v1/driving/${lng},${lat};${destLng},${destLat}?overview=full&geometries=geojson`;
 
             fetch(osrmUrl)
@@ -396,13 +423,9 @@
                         const route = data.routes[0];
                         currentRouteCoordinates = route.geometry.coordinates.map(coord => [coord[1], coord[0]]);
 
-                        // Idrowing ang linya ng ruta sa mapa
                         routeLayer = L.polyline(currentRouteCoordinates, {color: '#8c6d46', weight: 5, opacity: 0.8}).addTo(map);
-
-                        // I-zoom ang mapa para sakupin ang buong ruta
                         map.fitBounds(routeLayer.getBounds(), {padding: [50, 50]});
 
-                        // Ipakita ang simulation button
                         document.getElementById("simulate-btn").style.display = "inline-block";
                         alert("Tagumpay! Na-load na ang ruta sa mapa. I-click ang 'Simulan ang Paggalaw' upang makita ang paggalaw patungong event.");
                     } else {
@@ -415,7 +438,6 @@
                 });
         }
 
-        // 4. Function para sa gumagalaw na marker (Simulation sa mismong site)
         function startMovementSimulation() {
             if(currentRouteCoordinates.length === 0) return;
             if(movingMarker) map.removeLayer(movingMarker);
