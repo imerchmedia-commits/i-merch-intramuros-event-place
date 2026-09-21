@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="tl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Imbitasyon sa Foro de Intramuros</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts para sa Historic Look -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="parchment-container">
+        <header>
+            <h1>Kasaysayan at Pagdiriwang</h1>
+            <p class="sub-title">Foro de Intramuros • Calle Arzobispo corner Anda St.</p>
+        </header>
+
+        <!-- Navigation Tabs -->
+        <div class="tab-buttons">
+            <button class="tab-btn active" onclick="openTab(event, 'mapTab')">Mapa at Lokasyon</button>
+            <button class="tab-btn" onclick="openTab(event, 'attireTab')">Gabay sa Kasuotan</button>
+        </div>
+
+        <!-- TAB 1: Map & Event Place Pictures -->
+        <div id="mapTab" class="tab-content active">
+            <h2>Gabay Patungo sa Himpilan</h2>
+            <p>I-click ang pin o hanapin ang iyong lokasyon upang makita ang daan patungo sa Foro de Intramuros.</p>
+            
+            <!-- Google Maps Embed para sa Foro de Intramuros -->
+            <div class="map-wrapper">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3860.9996658066224!2d120.97235547689626!3d14.591993577123984!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397ca3e7b1685e1%3A0xc3434cf0087796d6!2sForo%20de%20Intramuros!5e0!3m2!1sen!2sph!4v1710000000000!5m2!1sen!2sph" 
+                    width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy">
+                ></iframe>
+            </div>
+
+            <div class="gallery-section">
+            <h3>Anyo ng Paligid at Event Place</h3>
+                <div class="image-grid">
+                    <!-- Palitan ang src ng link ng mga litrato mo -->
+                    <div class="img-card"><img src="images/place1.jpg" alt="Foro de Intramuros Facade"><p>Harapan ng Gusali</p></div>
+                    <div class="img-card"><img src="images/place2.jpg" alt="Event Hall Interior"><p>Bulwagan</p></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB 2: Attire / Susuotin -->
+        <div id="attireTab" class="tab-content">
+            <h2>Kasuotang Pilipino / Historic Style</h2>
+            <p>Upang mas maging makasaysayan at angkop sa ating pagtitipon, hinihimok ang lahat na suotin ang mga sumusunod na istilo:</p>
+            
+            <div class="image-grid">
+                <div class="img-card"><img src="images/attire1.jpg" alt="Barong Tagalog"><p>Barong Tagalog / Filipiniana</p></div>
+                <div class="img-card"><img src="images/attire2.jpg" alt="Vintage Formal"><p>Maria Clara / Vintage Formal</p></div>
+            </div>
+        </div>
+
+        <footer>
+            <p>&copy; 2026 Intramuros Celebration. Nakalaan ang lahat ng karapatan.</p>
+        </footer>
+    </div>
+
+    <!-- JavaScript para sa Tabs -->
+    <script>
+        function openTab(evt, tabName) {
+            let i, tabContent, tabBtns;
+            tabContent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabContent.length; i++) {
+                tabContent[i].style.display = "none";
+            }
+            tabBtns = document.getElementsByClassName("tab-btn");
+            for (i = 0; i < tabBtns.length; i++) {
+                tabBtns[i].className = tabBtns[i].className.replace(" active", "");
+            }
+            document.getElementById(tabName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+    </script>
+</body>
+</html>
