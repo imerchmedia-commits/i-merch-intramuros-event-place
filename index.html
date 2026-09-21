@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="style.css">
     <!-- Google Fonts para sa Historic Look -->
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Leaflet CSS para sa Interactive Map sa Loob ng Site -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 </head>
 <body>
 
@@ -14,11 +17,18 @@
         <header>
             <h1>Kasaysayan at Pagdiriwang</h1>
             <p class="sub-title">Foro de Intramuros • Calle Arzobispo corner Anda St., Manila</p>
-            <!-- Idinagdag ang Petsa at Oras -->
-            <div class="event-schedule" style="margin-top: 15px; padding: 10px; border-top: 1px solid #8c6d46; border-bottom: 1px solid #8c6d46; display: inline-block;">
-                <p style="font-family: 'Cinzel', serif; font-size: 1.1rem; font-weight: bold; color: #594228; margin: 0;">
+            
+            <!-- Itinakdang Iskedyul ng Event -->
+            <div class="event-schedule">
+                <p class="schedule-text">
                     📅 DECEMBER 14, 2026 &nbsp;|&nbsp; LUNES &nbsp;|&nbsp; ⏰ 6:00 PM
                 </p>
+            </div>
+
+            <!-- Live Real-Time Date and 12-Hour Clock para sa Android/iPhone -->
+            <div class="live-clock-container">
+                <span class="clock-label">Kasalukuyang Oras:</span>
+                <div id="live-clock">Kinukuha ang oras...</div>
             </div>
         </header>
 
@@ -31,23 +41,19 @@
         <!-- TAB 1: Map & Event Place Pictures -->
         <div id="mapTab" class="tab-content active">
             <h2>Gabay Patungo sa Himpilan</h2>
-            <p>Ilagay ang iyong lokasyon o i-click ang button upang gabayan ka papunta sa <strong>Foro de Intramuros</strong>.</p>
+            <p>Ilagay ang iyong lokasyon o i-click ang GPS upang makita ang direktang ruta sa mismong mapa sa ibaba!</p>
             
-            <!-- Form para sa paglalagay ng sariling lokasyon -->
-            <div class="nav-control-box" style="margin-bottom: 15px; text-align: center;">
-                <input type="text" id="user-location-input" placeholder="Hal. Quiapo, Manila o Tondo" style="padding: 10px; width: 60%; border: 1px solid #8c6d46; background: #fdfbf7; font-family: 'Playfair Display', serif;">
-                <button onclick="startCustomNavigation()" class="waze-btn" style="padding: 10px 15px; font-size: 0.9rem;">Maglakbay (Go)</button>
-                <br>
-                <button onclick="getMyCurrentLocation()" class="waze-btn" style="margin-top: 10px; background-color: #594228; font-size: 0.85rem;">📍 Gamitin ang Aking GPS Location</button>
+            <!-- Form para sa paglalagay ng sariling lokasyon (Mobile Friendly Layout) -->
+            <div class="nav-control-box">
+                <input type="text" id="user-location-input" placeholder="Hal. Quiapo, Manila o Tondo">
+                <button onclick="calculateAndShowRoute()" class="waze-btn">Maglakbay (Go)</button>
+                <button onclick="getMyCurrentLocation()" class="waze-btn gps-btn">📍 Gamitin ang Aking GPS Location</button>
+                <button id="simulate-btn" onclick="startMovementSimulation()" class="waze-btn simulate-btn" style="display:none;">🚗 Simulan ang Paggalaw (Go!)</button>
             </div>
 
-            <!-- Google Maps Embed na nakatutok sa Foro de Intramuros -->
+            <!-- MISMONG MAPA SA LOOB NG SITE (Leaflet Interactive Map) -->
             <div class="map-wrapper">
-                <iframe 
-                    id="embedded-map"
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3860.9996658066224!2d120.97235547689626!3d14.591993577123984!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397ca3e7b1685e1%3A0xc3434cf0087796d6!2sForo%20de%20Intramuros!5e0!3m2!1sen!2sph!4v1710000000000!5m2!1sen!2sph" 
-                    width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy">
-                </iframe>
+                <div id="site-leaflet-map"></div>
             </div>
 
             <div class="gallery-section">
@@ -55,19 +61,19 @@
                 <div class="image-grid">
                     <!-- Larawan 1: Harapan / Exterior -->
                     <div class="img-card">
-                        <img src="front.jpg" alt="Foro de Intramuros Exterior">[front]
+                        <img src="front.jpg" alt="Foro de Intramuros Exterior">
                         <p>Klasikong Harapan ng Gusali</p>
                     </div>
                     
                     <!-- Larawan 2: Loob / Interior -->
                     <div class="img-card">
-                        <img src="side.jpg" alt="Foro de Intramuros Interior">[side]
+                        <img src="side.jpg" alt="Foro de Intramuros Interior">
                         <p>Bulwagan at Liwanag sa Loob</p>
                     </div>
 
                     <!-- Larawan 3: Aerial View -->
-                    <div class="img-card" style="width: 100%;">
-                        <img src="top.jpg" alt="Foro de Intramuros Aerial View" style="height: 280px;">[top]
+                    <div class="img-card full-width-card">
+                        <img src="top.jpg" alt="Foro de Intramuros Aerial View" class="aerial-img">
                         <p>Kabuuan ng Lugar (Aerial View)</p>
                     </div>
                 </div>
@@ -77,13 +83,12 @@
         <!-- TAB 2: Attire / Susuotin -->
         <div id="attireTab" class="tab-content">
             <h2>Kasuotang Pilipino / Historic Style</h2>
-            <p>Upang mas maging angkop sa ating temang makasaysayan, hinihimok ang lahat na dumalo suot ang mga sumusunod na istilo[cite: 6]:</p>
+            <p>Upang mas maging angkop sa ating temang makasaysayan, hinihimok ang lahat na dumalo suot ang mga sumusunod na istilo:</p>
             
             <div class="image-grid">
-                <div class="img-card" style="width: 100%;">
-                    <!-- Ginamit ang samplepic.jfif para sa kasuotan -->
-                    <img src="samplepic.jpg" alt="Historic Event Attire Style" style="height: 450px; object-fit: contain; background: #fff;">[cite: 6]
-                    <p>Barong Tagalog, Filipiniana, at iba pang Historic / Vintage Look[sample na kasuotan]</p>
+                <div class="img-card full-width-card">
+                    <img src="samplepic.jpg" alt="Historic Event Attire Style" class="attire-img">
+                    <p>Barong Tagalog, Filipiniana, at iba pang Historic / Vintage Look</p>
                 </div>
             </div>
         </div>
@@ -93,8 +98,157 @@
         </footer>
     </div>
 
-    <!-- JavaScript para sa Tabs at Navigation -->
+    <!-- Karagdagang CSS sa loob ng file para sa Mobile Optimization at Live Clock -->
+    <style>
+        /* Pagpapaganda ng Live Clock para babagay sa Parchment Theme */
+        .live-clock-container {
+            margin-top: 10px;
+            padding: 8px 12px;
+            background: rgba(255, 248, 230, 0.7);
+            border: 1px dashed #8c6d46;
+            display: inline-block;
+            border-radius: 4px;
+            max-width: 100%;
+        }
+        .clock-label {
+            font-family: 'Playfair Display', serif;
+            font-size: 0.85rem;
+            color: #614e3b;
+            display: block;
+        }
+        #live-clock {
+            font-family: 'Cinzel', serif;
+            font-size: 1rem;
+            font-weight: bold;
+            color: #594228;
+        }
+
+        .event-schedule {
+            margin-top: 12px; 
+            padding: 8px; 
+            border-top: 1px solid #8c6d46; 
+            border-bottom: 1px solid #8c6d46; 
+            display: inline-block;
+            max-width: 100%;
+        }
+        .schedule-text {
+            font-family: 'Cinzel', serif; 
+            font-size: 0.95rem; 
+            font-weight: bold; 
+            color: #594228; 
+            margin: 0;
+            word-break: break-word;
+        }
+
+        /* Mobile-friendly adjustments para sa inputs at buttons */
+        .nav-control-box {
+            margin-bottom: 15px; 
+            text-align: center;
+        }
+        #user-location-input {
+            padding: 10px; 
+            width: 70%; 
+            max-width: 300px;
+            border: 1px solid #8c6d46; 
+            background: #fdfbf7; 
+            font-family: 'Playfair Display', serif;
+            font-size: 1rem;
+            border-radius: 4px;
+            margin-bottom: 8px;
+        }
+        .waze-btn {
+            background-color: #8c6d46;
+            color: #f4ebd0;
+            border: 2px solid #594228;
+            padding: 10px 15px;
+            font-family: 'Cinzel', serif;
+            font-size: 0.85rem;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 4px;
+            margin: 3px;
+            transition: all 0.3s ease;
+        }
+        .gps-btn {
+            background-color: #594228;
+        }
+        .simulate-btn {
+            background-color: #2e5939;
+        }
+
+        /* Sukat ng Leaflet Map para sa maliliit na screen ng cellphone */
+        #site-leaflet-map {
+            width: 100%; 
+            height: 350px; 
+            border: 2px solid #8c6d46; 
+            border-radius: 4px;
+        }
+
+        .full-width-card {
+            width: 100% !important;
+        }
+        .aerial-img {
+            height: 220px; 
+            object-fit: cover;
+        }
+        .attire-img {
+            height: 350px; 
+            object-fit: contain; 
+            background: #fff;
+        }
+
+        /* Media Query para sa mas maliliit na screen (iPhone SE, Android small screens) */
+        @media screen and (max-width: 480px) {
+            #user-location-input {
+                width: 100%;
+            }
+            .waze-btn {
+                width: 100%;
+                margin: 5px 0;
+            }
+            header h1 {
+                font-size: 1.5rem;
+            }
+            .sub-title {
+                font-size: 0.85rem;
+            }
+            .schedule-text {
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+
+    <!-- Leaflet JS para sa Interactive Map -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <!-- JavaScript para sa Tabs, Live Clock, at Routing / Simulation -->
     <script>
+        // Real-time 12-Hour Clock and Date Script
+        function updateLiveClock() {
+            const now = new Date();
+            
+            // Pormat ng Petsa (Hal. Monday, Sep 21, 2026)
+            const optionsDate = { weekday: 'long', year: 'numeric', month: 'short', day: 'numeric' };
+            const dateString = now.toLocaleDateString('en-US', optionsDate);
+            
+            // Pormat ng Oras sa 12-Hour Format na may AM/PM
+            let hours = now.getHours();
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            const ampm = hours >= 12 ? 'PM' : 'AM';
+            
+            hours = hours % 12;
+            hours = hours ? hours : 12; // ang 0 ay magiging 12
+            const hoursStr = String(hours).padStart(2, '0');
+
+            const timeString = `${hoursStr}:${minutes}:${seconds} ${ampm}`;
+            
+            document.getElementById("live-clock").innerText = `${dateString} | ${timeString}`;
+        }
+        // Paganahin ang clock kada segundo
+        setInterval(updateLiveClock, 1000);
+        window.onload = updateLiveClock;
+
         function openTab(evt, tabName) {
             let i, tabContent, tabBtns;
             tabContent = document.getElementsByClassName("tab-content");
@@ -107,38 +261,143 @@
             }
             document.getElementById(tabName).style.display = "block";
             evt.currentTarget.className += " active";
+            
+            // I-refresh ang sukat ng mapa kapag lumipat ng tab para hindi masira ang itsura sa mobile
+            if(tabName === 'mapTab') {
+                setTimeout(() => { map.invalidateSize(); }, 200);
+            }
         }
 
-        const destination = "Foro de Intramuros, Calle Arzobispo corner Anda St, Manila";
+        // Koordinates ng Foro de Intramuros
+        const destLat = 14.5919935;
+        const destLng = 120.9723554;
 
-        // Kapag naglagay ng text location ang user at nag-click ng "Go"
-        function startCustomNavigation() {
-            const originInput = document.getElementById("user-location-input").value;
-            if(!originInput) {
+        // Pagsisimula ng Mapa sa Loob ng Website gamit ang Leaflet
+        const map = L.map('site-leaflet-map').setView([destLat, destLng], 15);
+
+        // Pag-load ng Design ng Mapa (OpenStreetMap tiles)
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '&copy; OpenStreetMap contributors'
+        }).addTo(map);
+
+        // Lagyan ng default pin ang Foro de Intramuros
+        const destinationMarker = L.marker([destLat, destLng]).addTo(map)
+            .bindPopup("<b>Foro de Intramuros</b><br>Calle Arzobispo corner Anda St., Manila")
+            .openPopup();
+
+        let routeLayer = null;
+        let movingMarker = null;
+        let currentRouteCoordinates = [];
+        let simulationInterval = null;
+
+        // 1. Hanapin ang lat/lng ng tinype ng user gamit ang Nominatim Geocoder
+        function calculateAndShowRoute() {
+            const query = document.getElementById("user-location-input").value;
+            if(!query) {
                 alert("Mangyaring ilagay ang iyong lokasyon o munisipyo.");
                 return;
             }
-            const url = `https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(originInput)}&destination=${encodeURIComponent(destination)}`;
-            window.open(url, '_blank');
+
+            fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(query + ", Philippines")}`)
+                .then(response => response.json())
+                .then(data => {
+                    if(data && data.length > 0) {
+                        const userLat = parseFloat(data[0].lat);
+                        const userLng = parseFloat(data[0].lon);
+                        drawRouteOnSite(userLat, userLng);
+                    } else {
+                        alert("Hindi mahanap ang lokasyong iyon. Subukang ilagay ang mas malapit na lungsod o bayan.");
+                    }
+                })
+                .catch(err => {
+                    alert("Nagka-problema sa paghanap ng lokasyon.");
+                });
         }
 
-        // Kapag pinindot ang GPS button para awtomatikong makuha ang kinaroroonan
+        // 2. Kunin ang eksaktong GPS location ng user sa pamamagitan ng Browser
         function getMyCurrentLocation() {
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(
                     (position) => {
-                        const lat = position.coords.latitude;
-                        const lng = position.coords.longitude;
-                        const url = `https://www.google.com/maps/dir/?api=1&origin=${lat},${lng}&destination=${encodeURIComponent(destination)}`;
-                        window.open(url, '_blank');
+                        const userLat = position.coords.latitude;
+                        const userLng = position.coords.longitude;
+                        document.getElementById("user-location-input").value = "Aking GPS Location";
+                        drawRouteOnSite(userLat, userLng);
                     },
                     (error) => {
-                        alert("Hindi makuha ang GPS. Subukang i-type ang iyong lokasyon sa kahon.");
+                        alert("Hindi makuha ang GPS. Subukang i-type ang lokasyon sa kahon.");
                     }
                 );
             } else {
                 alert("Hindi sinusuportahan ng iyong browser ang geolocation.");
             }
+        }
+
+        // 3. I-drowing ang ruta sa mismong mapa at ihanda ang paggalaw
+        function drawRouteOnSite(lat, lng) {
+            if(routeLayer) map.removeLayer(routeLayer);
+            if(movingMarker) map.removeLayer(movingMarker);
+            if(simulationInterval) clearInterval(simulationInterval);
+
+            // Maglagay ng pin para sa User Origin
+            const userMarker = L.marker([lat, lng]).addTo(map)
+                .bindPopup("Iyong Lokasyon").openPopup();
+
+            // Kunin ang direksyon gamit ang OSRM Routing API
+            const osrmUrl = `https://router.project-osrm.org/route/v1/driving/${lng},${lat};${destLng},${destLat}?overview=full&geometries=geojson`;
+
+            fetch(osrmUrl)
+                .then(res => res.json())
+                .then(data => {
+                    if(data.routes && data.routes.length > 0) {
+                        const route = data.routes[0];
+                        currentRouteCoordinates = route.geometry.coordinates.map(coord => [coord[1], coord[0]]);
+
+                        // Idrowing ang linya ng ruta sa mapa
+                        routeLayer = L.polyline(currentRouteCoordinates, {color: '#8c6d46', weight: 5, opacity: 0.8}).addTo(map);
+
+                        // I-zoom ang mapa para sakupin ang buong ruta
+                        map.fitBounds(routeLayer.getBounds(), {padding: [50, 50]});
+
+                        // Ipakita ang simulation button
+                        document.getElementById("simulate-btn").style.display = "inline-block";
+                        alert("Tagumpay! Na-load na ang ruta sa mapa. I-click ang 'Simulan ang Paggalaw' upang makita ang paggalaw patungong event.");
+                    } else {
+                        alert("Walang nahanap na daan patungo sa destinasyon.");
+                    }
+                })
+                .catch(err => {
+                    console.error(err);
+                    alert("Hindi makakonekta sa routing server.");
+                });
+        }
+
+        // 4. Function para sa gumagalaw na marker (Simulation sa mismong site)
+        function startMovementSimulation() {
+            if(currentRouteCoordinates.length === 0) return;
+            if(movingMarker) map.removeLayer(movingMarker);
+            if(simulationInterval) clearInterval(simulationInterval);
+
+            movingMarker = L.marker(currentRouteCoordinates[0], {
+                icon: L.divIcon({
+                    className: 'moving-car-icon',
+                    html: '🚗',
+                    iconSize: [30, 30]
+                })
+            }).addTo(map);
+
+            let index = 0;
+            simulationInterval = setInterval(() => {
+                index++;
+                if(index < currentRouteCoordinates.length) {
+                    movingMarker.setLatLng(currentRouteCoordinates[index]);
+                    map.panTo(currentRouteCoordinates[index], {animate: true});
+                } else {
+                    clearInterval(simulationInterval);
+                    alert("Nakarating na kayo sa Foro de Intramuros!");
+                }
+            }, 300);
         }
     </script>
 </body>
