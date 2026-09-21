@@ -25,8 +25,16 @@
         <!-- TAB 1: Map & Event Place Pictures -->
         <div id="mapTab" class="tab-content active">
             <h2>Gabay Patungo sa Himpilan</h2>
-            <p>I-click ang pin o hanapin ang iyong lokasyon upang makita ang daan patungo sa <strong>Foro de Intramuros</strong> (Calle Arzobispo corner Anda St., Intramuros, Manila).</p>
+            <p>I-click ang button sa ibaba upang awtomatikong buksan ang direksyon mula sa iyong kasalukuyang kinaroroonan patungo sa <strong>Foro de Intramuros</strong>.</p>
             
+            <!-- Waze-style Interactive Navigation Button -->
+            <div class="nav-button-container" style="text-align: center; margin-bottom: 20px;">
+                <button onclick="getDirections()" class="waze-btn">
+                    🗺️ Buksan ang Waze / Maps mula sa Aking Lokasyon
+                </button>
+                <p id="location-status" style="font-size: 0.85rem; font-style: italic; margin-top: 5px; color: #614e3b;"></p>
+            </div>
+
             <!-- Google Maps Embed para sa Foro de Intramuros -->
             <div class="map-wrapper">
                 <iframe 
@@ -66,7 +74,6 @@
             
             <div class="image-grid">
                 <div class="img-card" style="width: 100%;">
-                    <!-- Ginamit ang samplepic.jfif para sa kasuotan -->
                     <img src="samplepic.jfif" alt="Historic Event Attire Style" style="height: 450px; object-fit: contain; background: #fff;">[cite: 6]
                     <p>Barong Tagalog, Filipiniana, at iba pang Historic / Vintage Look[cite: 6]</p>
                 </div>
@@ -78,7 +85,7 @@
         </footer>
     </div>
 
-    <!-- JavaScript para sa pagpalit ng Tabs -->
+    <!-- JavaScript para sa Tabs at Auto-Navigation -->
     <script>
         function openTab(evt, tabName) {
             let i, tabContent, tabBtns;
@@ -92,6 +99,38 @@
             }
             document.getElementById(tabName).style.display = "block";
             evt.currentTarget.className += " active";
+        }
+
+        // Function para makuha ang location ng user at mag-open ng directions patungong Foro de Intramuros
+        function getDirections() {
+            const statusText = document.getElementById("location-status");
+            const destination = "Foro de Intramuros, Calle Arzobispo corner Anda St, Manila";
+            
+            if (navigator.geolocation) {
+                statusText.innerText = "Kinukuha ang iyong lokasyon...";
+                navigator.geolocation.getCurrentPosition(
+                    (position) => {
+                        const lat = position.coords.latitude;
+                        const lng = position.coords.longitude;
+                        statusText.innerText = "Tagumpay! Binubuksan ang direksyon...";
+                        
+                        // Bubuksan ang Google Maps directions mula sa lat/lng ng user papunta sa Foro de Intramuros
+                        const mapsUrl = `https://www.google.com/maps/dir/?api=1&origin=${lat},${lng}&destination=${encodeURIComponent(destination)}`;
+                        window.open(mapsUrl, '_blank');
+                    },
+                    (error) => {
+                        statusText.innerText = "Hindi makuha ang lokasyon. Binubuksan ang destinasyon...";
+                        // Fallback kung sakaling i-block ng user ang GPS permission
+                        const fallbackUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(destination)}`;
+                        window.open(fallbackUrl, '_blank');
+                    },
+                    { timeout: 10000 }
+                );
+            } else {
+                // Kung hindi supported ng browser
+                const fallbackUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(destination)}`;
+                window.open(fallbackUrl, '_blank');
+            }
         }
     </script>
 </body>
