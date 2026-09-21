@@ -18,17 +18,17 @@
             <h1>Kasaysayan at Pagdiriwang</h1>
             <p class="sub-title">Foro de Intramuros • Calle Arzobispo corner Anda St., Manila</p>
             
-            <!-- Itinakdang Iskedyul ng Event -->
-            <div class="event-schedule">
-                <p class="schedule-text">
-                    📅 DECEMBER 14, 2026 &nbsp;|&nbsp; LUNES &nbsp;|&nbsp; ⏰ 6:00 PM
-                </p>
-            </div>
-
-            <!-- Live Real-Time Date and 12-Hour Clock para sa Android/iPhone -->
-            <div class="live-clock-container">
-                <span class="clock-label">Kasalukuyang Oras:</span>
-                <div id="live-clock">Kinukuha ang oras...</div>
+            <!-- Itinakdang Iskedyul at Live Clock -->
+            <div class="schedule-clock-wrapper">
+                <div class="event-schedule">
+                    <p class="schedule-text">
+                        📅 DECEMBER 14, 2026 &nbsp;|&nbsp; LUNES &nbsp;|&nbsp; ⏰ 6:00 PM
+                    </p>
+                </div>
+                <div class="live-clock-container">
+                    <span class="clock-label">Kasalukuyang Oras:</span>
+                    <div id="live-clock">Kinukuha ang oras...</div>
+                </div>
             </div>
         </header>
 
@@ -86,8 +86,9 @@
             <p>Upang mas maging angkop sa ating temang makasaysayan, hinihimok ang lahat na dumalo suot ang mga sumusunod na istilo:</p>
             
             <div class="image-grid">
-                <div class="img-card full-width-card">
-                    <img src="samplepic.jpg" alt="Historic Event Attire Style" class="attire-img">
+                <div class="img-card full-width-card attire-card-container">
+                    <!-- Naayos ang CSS class para hindi ma-crop ang buong litrato ng kasuotan -->
+                    <img src="samplepic.jpg" alt="Historic Event Attire Style" class="attire-img-fixed">
                     <p>Barong Tagalog, Filipiniana, at iba pang Historic / Vintage Look</p>
                 </div>
             </div>
@@ -98,42 +99,48 @@
         </footer>
     </div>
 
-    <!-- Karagdagang CSS sa loob ng file para sa Mobile Optimization at Live Clock -->
+    <!-- Karagdagang CSS para sa Mobile Optimization, Layout, at Fixed Attire Image -->
     <style>
-        /* Pagpapaganda ng Live Clock para babagay sa Parchment Theme */
+        .schedule-clock-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
         .live-clock-container {
-            margin-top: 10px;
-            padding: 8px 12px;
-            background: rgba(255, 248, 230, 0.7);
+            padding: 6px 12px;
+            background: rgba(255, 248, 230, 0.9);
             border: 1px dashed #8c6d46;
-            display: inline-block;
             border-radius: 4px;
-            max-width: 100%;
+            text-align: center;
         }
         .clock-label {
             font-family: 'Playfair Display', serif;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             color: #614e3b;
             display: block;
         }
         #live-clock {
             font-family: 'Cinzel', serif;
-            font-size: 1rem;
+            font-size: 0.95rem;
             font-weight: bold;
             color: #594228;
         }
 
         .event-schedule {
-            margin-top: 12px; 
-            padding: 8px; 
-            border-top: 1px solid #8c6d46; 
-            border-bottom: 1px solid #8c6d46; 
-            display: inline-block;
-            max-width: 100%;
+            padding: 6px 12px; 
+            border: 1px solid #8c6d46; 
+            border-radius: 4px;
+            background: rgba(255, 248, 230, 0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         .schedule-text {
             font-family: 'Cinzel', serif; 
-            font-size: 0.95rem; 
+            font-size: 0.9rem; 
             font-weight: bold; 
             color: #594228; 
             margin: 0;
@@ -188,13 +195,25 @@
             width: 100% !important;
         }
         .aerial-img {
+            width: 100%;
             height: 220px; 
             object-fit: cover;
         }
-        .attire-img {
-            height: 350px; 
-            object-fit: contain; 
+
+        /* PINA-AYOS NA CSS PARA SA ATTIRE IMAGE (SAMPLEPIC.JPG) */
+        .attire-card-container {
             background: #fff;
+            padding: 10px;
+            border-radius: 4px;
+            border: 1px solid #8c6d46;
+        }
+        .attire-img-fixed {
+            width: 100%;
+            height: auto;
+            max-height: 500px;
+            object-fit: contain; /* Siguraduhing makikita nang buo ang litrato nang hindi na-crop */
+            display: block;
+            margin: 0 auto;
         }
 
         /* Media Query para sa mas maliliit na screen (iPhone SE, Android small screens) */
@@ -207,13 +226,16 @@
                 margin: 5px 0;
             }
             header h1 {
-                font-size: 1.5rem;
+                font-size: 1.4rem;
             }
             .sub-title {
-                font-size: 0.85rem;
+                font-size: 0.8rem;
             }
             .schedule-text {
-                font-size: 0.8rem;
+                font-size: 0.75rem;
+            }
+            .attire-img-fixed {
+                max-height: 320px; /* Ibagay ang taas para sa maliliit na mobile screen */
             }
         }
     </style>
