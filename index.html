@@ -38,13 +38,21 @@
 
         <!-- Navigation Tabs -->
         <div class="tab-buttons">
-            <button class="tab-btn active" onclick="openTab(event, 'mapTab')">Mapa at Event Place</button>
+            <button class="tab-btn active" onclick="openTab(event, 'invitationTab')">💌 Imbitasyon</button>
+            <button class="tab-btn" onclick="openTab(event, 'mapTab')">Mapa at Event Place</button>
             <button class="tab-btn" onclick="openTab(event, 'attireTab')">Gabay sa Kasuotan</button>
             <button class="tab-btn" onclick="openTab(event, 'summaryTab')">📊 User Summary</button>
         </div>
 
+        <!-- TAB 0: Imbitasyon (Kasama ang bagong opisyal na paanyaya mula sa larawan) -->
+        <div id="invitationTab" class="tab-content active">
+            <div class="invitation-card-display">
+                <img src="INVITATION.jpg" alt="Fiesta de Navidad Invitation" class="invitation-image-main">
+            </div>
+        </div>
+
         <!-- TAB 1: Map & Event Place Pictures -->
-        <div id="mapTab" class="tab-content active">
+        <div id="mapTab" class="tab-content" style="display:none;">
             <h2>Gabay Patungo sa Himpilan</h2>
             <p>Ilagay ang iyong lokasyon (Siyudad/Bayan) o i-click ang GPS upang makita ang direktang ruta sa mismong mapa sa ibaba!</p>
             
@@ -147,7 +155,7 @@
         </footer>
     </div>
 
-    <!-- CSS -->
+    <!-- Karagdagang CSS -->
     <style>
         .logo-section { text-align: center; margin: 15px 0; padding: 5px; }
         .site-branding-logo { max-width: 180px; height: auto; display: block; margin: 0 auto; filter: sepia(15%) contrast(105%); }
@@ -172,13 +180,31 @@
         .attire-card-container { background: #fff; padding: 10px; border-radius: 4px; border: 1px solid #8c6d46; }
         .attire-img-fixed { width: 100% !important; height: auto !important; max-height: 500px !important; object-fit: contain !important; display: block !important; margin: 0 auto !important; background: #fff !important; }
 
+        /* Estilo para sa Display ng Invitation Image */
+        .invitation-card-display {
+            text-align: center;
+            padding: 10px;
+            background: #fff;
+            border: 2px solid #8c6d46;
+            border-radius: 6px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+        .invitation-image-main {
+            width: 100% !important;
+            height: auto !important;
+            max-height: 700px !important;
+            object-fit: contain !important;
+            display: block !important;
+            margin: 0 auto !important;
+        }
+
+        /* Analytics Tab CSS */
         .stats-counter-box { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; margin-bottom: 20px; }
         .stat-card { background: rgba(255, 248, 230, 0.95); border: 1px solid #8c6d46; border-radius: 6px; padding: 15px; min-width: 200px; text-align: center; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
         .stat-card h3 { font-family: 'Cinzel', serif; font-size: 0.9rem; color: #594228; margin-bottom: 8px; }
         #total-visitors-count { font-size: 1.8rem; font-weight: bold; color: #2b1d0c; margin: 0; font-family: 'Cinzel', serif; }
         .chart-container-box { background: rgba(255, 248, 230, 0.95); border: 1px solid #8c6d46; border-radius: 6px; padding: 20px; margin-top: 15px; }
         .chart-container-box h3 { font-family: 'Cinzel', serif; font-size: 1rem; color: #594228; margin-bottom: 15px; text-align: center; }
-        
         .bar-chart { display: flex; flex-direction: column; gap: 10px; }
         .bar-item { display: flex; flex-direction: column; gap: 3px; }
         .bar-label-row { display: flex; justify-content: space-between; font-size: 0.85rem; font-family: 'Playfair Display', serif; color: #4a3b32; font-weight: bold; }
@@ -192,6 +218,7 @@
             .sub-title { font-size: 0.8rem; }
             .schedule-text { font-size: 0.75rem; }
             .attire-img-fixed { max-height: 320px !important; }
+            .invitation-image-main { max-height: 450px !important; }
         }
     </style>
 
@@ -287,13 +314,9 @@
             }
         }
 
-        // --- PASSWORD PROTECTED RESET FUNCTION ---
         function clearAnalyticsData() {
             let enteredPassword = prompt("I-enter ang password para i-reset ang analytics data:");
-            
-            if (enteredPassword === null) {
-                return; // Pinindot ang Cancel
-            }
+            if (enteredPassword === null) return;
 
             if (enteredPassword === "Imerch2026@") {
                 localStorage.removeItem('foro_visitors');
