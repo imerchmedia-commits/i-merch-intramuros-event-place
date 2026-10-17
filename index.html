@@ -5,7 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Imbitasyon sa Foro de Intramuros</title>
     <link rel="stylesheet" href="style.css">
+    
     <!-- Google Fonts para sa Historic Look -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     
     <!-- Leaflet CSS para sa Interactive Map sa Loob ng Site -->
@@ -14,6 +17,7 @@
 <body>
 
     <div class="parchment-container">
+        <!-- HEADER SECTION -->
         <header>
             <h1>Kasaysayan at Pagdiriwang</h1>
             <p class="sub-title">Foro de Intramuros • Calle Arzobispo corner Anda St., Manila</p>
@@ -36,7 +40,7 @@
             </div>
         </header>
 
-        <!-- Navigation Tabs (Kasama na ang Mechanics at Criteria Tab) -->
+        <!-- NAVIGATION TABS -->
         <div class="tab-buttons">
             <button class="tab-btn active" onclick="openTab(event, 'invitationTab')">💌 Imbitasyon</button>
             <button class="tab-btn" onclick="openTab(event, 'mechanicsTab')">📜 Mechanics & Criteria</button>
@@ -45,33 +49,45 @@
             <button class="tab-btn" onclick="openTab(event, 'summaryTab')">📊 User Summary</button>
         </div>
 
-        <!-- TAB 0: Imbitasyon (Kasama ang dalawang poster ng paanyaya) -->
+        <!-- TAB 0: IMBITASYO (Main Invitation Poster) -->
         <div id="invitationTab" class="tab-content active">
-            <div class="invitation-gallery">
-                <div class="invitation-card-display">
-                    <img src="INVITATION.jpg" alt="Fiesta de Navidad Invitation" class="invitation-image-main">
-                </div>
-                <div class="invitation-card-display" style="margin-top: 20px;">
-                    <img src="INVITATION_2.png" alt="Philippine Folk Dance Show Poster" class="invitation-image-main">
-                </div>
+            <div class="tab-header-box">
+                <h2>Opisyal na Imbitasyon</h2>
+                <p>Kaisa ng buong pamunuan, malugod namin kayong inaanyayahan sa isang gabi ng pagdiriwang at masayang salu-salo.</p>
             </div>
-        </div>
-
-        <!-- TAB 1: Mechanics at Criteria (BAGONG TAB) -->
-        <div id="mechanicsTab" class="tab-content" style="display:none;">
-            <h2>Mekanismo at Pamantayan sa Paghahatol</h2>
-            <p>Narito ang opisyal na mechanics at criteria para sa gaganaping Philippine Folk Dance Competition[cite: 3]:</p>
             <div class="invitation-card-display">
-                <img src="MECHANICS AND CRITERIA.png" alt="Mechanics and Criteria for Judging" class="invitation-image-main">
+                <img src="INVITATION.jpg" alt="Fiesta de Navidad Invitation Poster" class="invitation-image-main">
             </div>
         </div>
 
-        <!-- TAB 2: Map & Event Place Pictures -->
-        <div id="mapTab" class="tab-content" style="display:none;">
-            <h2>Gabay Patungo sa Himpilan</h2>
-            <p>Ilagay ang iyong lokasyon (Siyudad/Bayan) o i-click ang GPS upang makita ang direktang ruta sa mismong mapa sa ibaba!</p>
+        <!-- TAB 1: MECHANICS & CRITERIA (Show Poster + Rules & Criteria Poster) -->
+        <div id="mechanicsTab" class="tab-content" style="display:none;">
+            <div class="tab-header-box">
+                <h2>Mekanismo at Pamantayan sa Paghahatol</h2>
+                <p>Mga alituntunin at gabay para sa gaganaping Philippine Folk Dance Competition[cite: 3]:</p>
+            </div>
             
-            <!-- Form para sa paglalagay ng sariling lokasyon -->
+            <!-- Poster 1: Philippine Folk Dance Show Poster -->
+            <div class="invitation-card-display" style="margin-bottom: 30px;">
+                <h3 class="poster-subheading">Philippine Folk Dance Show</h3>
+                <img src="INVITATION_2.jpg" alt="Philippine Folk Dance Show Poster" class="invitation-image-main">
+            </div>
+
+            <!-- Poster 2: Mechanics and Criteria Poster -->
+            <div class="invitation-card-display">
+                <h3 class="poster-subheading">Mechanics at Criteria for Judging</h3>
+                <img src="MECHANICS AND CRITERIA.jpg" alt="Mechanics and Criteria for Judging Poster" class="invitation-image-main">
+            </div>
+        </div>
+
+        <!-- TAB 2: MAPA AT EVENT PLACE -->
+        <div id="mapTab" class="tab-content" style="display:none;">
+            <div class="tab-header-box">
+                <h2>Gabay Patungo sa Himpilan</h2>
+                <p>Ilagay ang iyong lokasyon (Siyudad/Bayan) o i-click ang GPS upang makita ang direktang ruta sa mismong mapa sa ibaba!</p>
+            </div>
+            
+            <!-- Controls para sa Navigation at Routing -->
             <div class="nav-control-box">
                 <input type="text" id="user-location-input" placeholder="Hal. Manila, Quezon City o Makati">
                 <button onclick="calculateAndShowRoute()" class="waze-btn">Maglakbay (Go)</button>
@@ -79,11 +95,12 @@
                 <button id="simulate-btn" onclick="startMovementSimulation()" class="waze-btn simulate-btn" style="display:none;">🚗 Simulan ang Paggalaw (Go!)</button>
             </div>
 
-            <!-- MISMONG MAPA SA LOOB NG SITE -->
+            <!-- Leaflet Interactive Map Container -->
             <div class="map-wrapper">
                 <div id="site-leaflet-map"></div>
             </div>
 
+            <!-- Gallery ng Event Place -->
             <div class="gallery-section">
                 <h3>Anyo ng Paligid at Event Place</h3>
                 <div class="image-grid">
@@ -102,7 +119,7 @@
                 </div>
             </div>
 
-            <!-- SEKSYON NG KASAYSAYAN NG LUPAIN -->
+            <!-- Kasaysayan ng Lupain Section -->
             <div class="history-section">
                 <h3>Kasaysayan ng Lupain</h3>
                 <p>
@@ -123,10 +140,12 @@
             </div>
         </div>
 
-        <!-- TAB 3: Attire / Susuotin -->
+        <!-- TAB 3: GABAY SA KASUOTAN -->
         <div id="attireTab" class="tab-content" style="display:none;">
-            <h2>Kasuotang Pilipino / Historic Style</h2>
-            <p>Upang mas maging angkop sa ating temang makasaysayan, hinihimok ang lahat na dumalo suot ang mga sumusunod na istilo:</p>
+            <div class="tab-header-box">
+                <h2>Kasuotang Pilipino / Historic Style</h2>
+                <p>Upang mas maging angkop sa ating temang makasaysayan, hinihimok ang lahat na dumalo suot ang mga sumusunod na istilo:</p>
+            </div>
             <div class="image-grid">
                 <div class="img-card full-width-card attire-card-container">
                     <img src="samplepic.jpg" alt="Historic Event Attire Style" class="attire-img-fixed">
@@ -135,10 +154,12 @@
             </div>
         </div>
 
-        <!-- TAB 4: User Summary & Analytics -->
+        <!-- TAB 4: USER SUMMARY & ANALYTICS -->
         <div id="summaryTab" class="tab-content" style="display:none;">
-            <h2>📊 Buod ng mga Gumagamit ng Site</h2>
-            <p>Dito makikita ang kabuuang bilang ng mga bumisita, ang uri ng telepono/device na kanilang ginamit, at ang graph ng mga siyudad kung saan sila nagmula.</p>
+            <div class="tab-header-box">
+                <h2>📊 Buod ng mga Gumagamit ng Site</h2>
+                <p>Dito makikita ang kabuuang bilang ng mga bumisita, ang uri ng telepono/device na kanilang ginamit, at ang graph ng mga siyudad kung saan sila nagmula.</p>
+            </div>
             
             <div class="stats-counter-box">
                 <div class="stat-card">
@@ -147,8 +168,8 @@
                 </div>
                 <div class="stat-card">
                     <h3>Uri ng Device na Ginamit</h3>
-                    <ul id="device-breakdown-list" style="list-style-type: none; padding: 0; text-align: left; font-size: 0.9rem;">
-                        <!-- Dynamic content -->
+                    <ul id="device-breakdown-list">
+                        <!-- Dynamic Device Analytics -->
                     </ul>
                 </div>
             </div>
@@ -156,96 +177,345 @@
             <div class="chart-container-box">
                 <h3>📈 Bilang ng mga Bisita kada Siyudad/Lugar</h3>
                 <div id="city-bar-chart" class="bar-chart">
-                    <!-- Dynamic Bar Graph -->
+                    <!-- Dynamic Bar Graph Analytics -->
                 </div>
             </div>
             
-            <div style="text-align: center; margin-top: 20px;">
-                <button onclick="clearAnalyticsData()" class="waze-btn" style="background-color: #a93226; font-size: 0.75rem;">I-reset ang Data ng Analytics</button>
+            <div class="reset-button-wrapper">
+                <button onclick="clearAnalyticsData()" class="waze-btn reset-btn">I-reset ang Data ng Analytics</button>
             </div>
         </div>
 
+        <!-- FOOTER -->
         <footer>
             <p>&copy; 2026 Intramuros Celebration. Nakalaan ang lahat ng karapatan.</p>
         </footer>
     </div>
 
-    <!-- Karagdagang CSS -->
+    <!-- INTERNAL STYLESHEET (Mobile & UI Enhancements) -->
     <style>
-        .logo-section { text-align: center; margin: 15px 0; padding: 5px; }
-        .site-branding-logo { max-width: 180px; height: auto; display: block; margin: 0 auto; filter: sepia(15%) contrast(105%); }
-        .schedule-clock-wrapper { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 15px; }
-        .live-clock-container { padding: 6px 12px; background: rgba(255, 248, 230, 0.9); border: 1px dashed #8c6d46; border-radius: 4px; text-align: center; }
-        .clock-label { font-family: 'Playfair Display', serif; font-size: 0.8rem; color: #614e3b; display: block; }
-        #live-clock { font-family: 'Cinzel', serif; font-size: 0.95rem; font-weight: bold; color: #594228; }
-        .event-schedule { padding: 6px 12px; border: 1px solid #8c6d46; border-radius: 4px; background: rgba(255, 248, 230, 0.9); display: flex; align-items: center; justify-content: center; }
-        .schedule-text { font-family: 'Cinzel', serif; font-size: 0.9rem; font-weight: bold; color: #594228; margin: 0; word-break: break-word; }
-        .nav-control-box { margin-bottom: 15px; text-align: center; }
-        #user-location-input { padding: 10px; width: 70%; max-width: 300px; border: 1px solid #8c6d46; background: #fdfbf7; font-family: 'Playfair Display', serif; font-size: 1rem; border-radius: 4px; margin-bottom: 8px; }
-        .waze-btn { background-color: #8c6d46; color: #f4ebd0; border: 2px solid #594228; padding: 10px 15px; font-family: 'Cinzel', serif; font-size: 0.85rem; font-weight: bold; cursor: pointer; border-radius: 4px; margin: 3px; transition: all 0.3s ease; }
-        .gps-btn { background-color: #594228; }
-        .simulate-btn { background-color: #2e5939; }
-        #site-leaflet-map { width: 100%; height: 350px; border: 2px solid #8c6d46; border-radius: 4px; }
-        .full-width-card { width: 100% !important; }
-        .aerial-img { width: 100%; height: 220px; object-fit: cover; }
-        .history-section { margin-top: 30px; padding-top: 20px; border-top: 2px dashed #bfa181; text-align: justify; }
-        .history-section h3 { text-align: center; margin-bottom: 15px; color: #2b1d0c; }
-        .history-section h4 { font-family: 'Cinzel', serif; color: #594228; margin-top: 20px; margin-bottom: 8px; font-size: 1.05rem; }
-        .history-section p { font-size: 0.95rem; line-height: 1.6; color: #4a3b32; margin-bottom: 12px; }
-        .attire-card-container { background: #fff; padding: 10px; border-radius: 4px; border: 1px solid #8c6d46; }
-        .attire-img-fixed { width: 100% !important; height: auto !important; max-height: 500px !important; object-fit: contain !important; display: block !important; margin: 0 auto !important; background: #fff !important; }
-
-        /* Estilo para sa Display ng Image Cards */
+        .logo-section {
+            text-align: center;
+            margin: 15px 0;
+            padding: 5px;
+        }
+        .site-branding-logo {
+            max-width: 180px;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+            filter: sepia(15%) contrast(105%);
+        }
+        .schedule-clock-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        .live-clock-container {
+            padding: 6px 12px;
+            background: rgba(255, 248, 230, 0.9);
+            border: 1px dashed #8c6d46;
+            border-radius: 4px;
+            text-align: center;
+        }
+        .clock-label {
+            font-family: 'Playfair Display', serif;
+            font-size: 0.8rem;
+            color: #614e3b;
+            display: block;
+        }
+        #live-clock {
+            font-family: 'Cinzel', serif;
+            font-size: 0.95rem;
+            font-weight: bold;
+            color: #594228;
+        }
+        .event-schedule {
+            padding: 6px 12px;
+            border: 1px solid #8c6d46;
+            border-radius: 4px;
+            background: rgba(255, 248, 230, 0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .schedule-text {
+            font-family: 'Cinzel', serif;
+            font-size: 0.9rem;
+            font-weight: bold;
+            color: #594228;
+            margin: 0;
+            word-break: break-word;
+        }
+        .tab-header-box {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .tab-header-box h2 {
+            font-family: 'Cinzel', serif;
+            color: #2b1d0c;
+            margin-bottom: 8px;
+        }
+        .tab-header-box p {
+            font-size: 0.95rem;
+            color: #614e3b;
+        }
+        .nav-control-box {
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        #user-location-input {
+            padding: 10px;
+            width: 70%;
+            max-width: 300px;
+            border: 1px solid #8c6d46;
+            background: #fdfbf7;
+            font-family: 'Playfair Display', serif;
+            font-size: 1rem;
+            border-radius: 4px;
+            margin-bottom: 8px;
+        }
+        .waze-btn {
+            background-color: #8c6d46;
+            color: #f4ebd0;
+            border: 2px solid #594228;
+            padding: 10px 15px;
+            font-family: 'Cinzel', serif;
+            font-size: 0.85rem;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 4px;
+            margin: 3px;
+            transition: all 0.3s ease;
+        }
+        .waze-btn:hover {
+            background-color: #594228;
+            color: #ffffff;
+        }
+        .gps-btn {
+            background-color: #594228;
+        }
+        .simulate-btn {
+            background-color: #2e5939;
+        }
+        .reset-btn {
+            background-color: #a93226;
+            font-size: 0.75rem;
+        }
+        .reset-button-wrapper {
+            text-align: center;
+            margin-top: 25px;
+        }
+        #site-leaflet-map {
+            width: 100%;
+            height: 380px;
+            border: 2px solid #8c6d46;
+            border-radius: 4px;
+        }
+        .full-width-card {
+            width: 100% !important;
+        }
+        .aerial-img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+        .history-section {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px dashed #bfa181;
+            text-align: justify;
+        }
+        .history-section h3 {
+            text-align: center;
+            margin-bottom: 15px;
+            color: #2b1d0c;
+        }
+        .history-section h4 {
+            font-family: 'Cinzel', serif;
+            color: #594228;
+            margin-top: 20px;
+            margin-bottom: 8px;
+            font-size: 1.05rem;
+        }
+        .history-section p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #4a3b32;
+            margin-bottom: 12px;
+        }
+        .attire-card-container {
+            background: #fff;
+            padding: 10px;
+            border-radius: 4px;
+            border: 1px solid #8c6d46;
+        }
+        .attire-img-fixed {
+            width: 100% !important;
+            height: auto !important;
+            max-height: 500px !important;
+            object-fit: contain !important;
+            display: block !important;
+            margin: 0 auto !important;
+            background: #fff !important;
+        }
         .invitation-card-display {
             text-align: center;
-            padding: 10px;
+            padding: 12px;
             background: #fff;
             border: 2px solid #8c6d46;
             border-radius: 6px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+        }
+        .poster-subheading {
+            font-family: 'Cinzel', serif;
+            font-size: 1.1rem;
+            color: #594228;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #e6dfcc;
+            padding-bottom: 5px;
         }
         .invitation-image-main {
             width: 100% !important;
             height: auto !important;
-            max-height: 800px !important;
+            max-height: 850px !important;
             object-fit: contain !important;
             display: block !important;
             margin: 0 auto !important;
         }
 
-        /* Analytics Tab CSS */
-        .stats-counter-box { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; margin-bottom: 20px; }
-        .stat-card { background: rgba(255, 248, 230, 0.95); border: 1px solid #8c6d46; border-radius: 6px; padding: 15px; min-width: 200px; text-align: center; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
-        .stat-card h3 { font-family: 'Cinzel', serif; font-size: 0.9rem; color: #594228; margin-bottom: 8px; }
-        #total-visitors-count { font-size: 1.8rem; font-weight: bold; color: #2b1d0c; margin: 0; font-family: 'Cinzel', serif; }
-        .chart-container-box { background: rgba(255, 248, 230, 0.95); border: 1px solid #8c6d46; border-radius: 6px; padding: 20px; margin-top: 15px; }
-        .chart-container-box h3 { font-family: 'Cinzel', serif; font-size: 1rem; color: #594228; margin-bottom: 15px; text-align: center; }
-        .bar-chart { display: flex; flex-direction: column; gap: 10px; }
-        .bar-item { display: flex; flex-direction: column; gap: 3px; }
-        .bar-label-row { display: flex; justify-content: space-between; font-size: 0.85rem; font-family: 'Playfair Display', serif; color: #4a3b32; font-weight: bold; }
-        .bar-track { background: #e6dfcc; border-radius: 4px; height: 20px; width: 100%; overflow: hidden; border: 1px solid #c7b299; }
-        .bar-fill { background: #8c6d46; height: 100%; width: 0%; transition: width 0.6s ease; border-radius: 3px 0 0 3px; }
+        /* Analytics Tab Styles */
+        .stats-counter-box {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+        .stat-card {
+            background: rgba(255, 248, 230, 0.95);
+            border: 1px solid #8c6d46;
+            border-radius: 6px;
+            padding: 15px;
+            min-width: 220px;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .stat-card h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 0.9rem;
+            color: #594228;
+            margin-bottom: 8px;
+        }
+        #total-visitors-count {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #2b1d0c;
+            margin: 0;
+            font-family: 'Cinzel', serif;
+        }
+        #device-breakdown-list {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            text-align: left;
+            font-size: 0.9rem;
+            color: #4a3b32;
+        }
+        #device-breakdown-list li {
+            margin-bottom: 4px;
+        }
+        .chart-container-box {
+            background: rgba(255, 248, 230, 0.95);
+            border: 1px solid #8c6d46;
+            border-radius: 6px;
+            padding: 20px;
+            margin-top: 15px;
+        }
+        .chart-container-box h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 1rem;
+            color: #594228;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        .bar-chart {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .bar-item {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+        .bar-label-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            font-family: 'Playfair Display', serif;
+            color: #4a3b32;
+            font-weight: bold;
+        }
+        .bar-track {
+            background: #e6dfcc;
+            border-radius: 4px;
+            height: 22px;
+            width: 100%;
+            overflow: hidden;
+            border: 1px solid #c7b299;
+        }
+        .bar-fill {
+            background: #8c6d46;
+            height: 100%;
+            width: 0%;
+            transition: width 0.6s ease;
+            border-radius: 3px 0 0 3px;
+        }
 
+        /* Mobile Optimization Rules */
         @media screen and (max-width: 480px) {
-            #user-location-input { width: 100%; }
-            .waze-btn { width: 100%; margin: 5px 0; }
-            header h1 { font-size: 1.4rem; }
-            .sub-title { font-size: 0.8rem; }
-            .schedule-text { font-size: 0.75rem; }
-            .attire-img-fixed { max-height: 320px !important; }
-            .invitation-image-main { max-height: 480px !important; }
+            #user-location-input {
+                width: 100%;
+            }
+            .waze-btn {
+                width: 100%;
+                margin: 5px 0;
+            }
+            header h1 {
+                font-size: 1.4rem;
+            }
+            .sub-title {
+                font-size: 0.8rem;
+            }
+            .schedule-text {
+                font-size: 0.75rem;
+            }
+            .attire-img-fixed {
+                max-height: 320px !important;
+            }
+            .invitation-image-main {
+                max-height: 480px !important;
+            }
+            #site-leaflet-map {
+                height: 300px;
+            }
         }
     </style>
 
-    <!-- Leaflet JS -->
+    <!-- Leaflet JS Library -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
-    <!-- JavaScript -->
+    <!-- JAVASCRIPT LOGIC -->
     <script>
+        // --- VISITOR ANALYTICS & DEVICE TRACKING ---
         function trackVisitor() {
             let visitors = JSON.parse(localStorage.getItem('foro_visitors') || '[]');
             const ua = navigator.userAgent;
             let deviceType = "Desktop / Laptop";
+            
             if (/android/i.test(ua)) {
                 deviceType = "Android Phone";
             } else if (/iphone|ipad|ipod/i.test(ua)) {
@@ -279,9 +549,11 @@
         }
 
         function updateAnalyticsDisplay() {
+            // 1. Update Visitor Count
             let visitors = JSON.parse(localStorage.getItem('foro_visitors') || '[]');
             document.getElementById('total-visitors-count').innerText = visitors.length;
 
+            // 2. Update Device Breakdown
             let deviceCounts = {};
             visitors.forEach(v => {
                 deviceCounts[v.device] = (deviceCounts[v.device] || 0) + 1;
@@ -296,6 +568,7 @@
             }
             document.getElementById('device-breakdown-list').innerHTML = deviceListHtml;
 
+            // 3. Update Dynamic City Bar Graph
             let cityData = JSON.parse(localStorage.getItem('foro_cities') || '{}');
             let chartContainer = document.getElementById('city-bar-chart');
             chartContainer.innerHTML = '';
@@ -343,6 +616,7 @@
             }
         }
 
+        // --- LIVE 12-HOUR CLOCK FUNCTION ---
         function updateLiveClock() {
             const now = new Date();
             const optionsDate = { weekday: 'long', year: 'numeric', month: 'short', day: 'numeric' };
@@ -362,6 +636,7 @@
         }
         setInterval(updateLiveClock, 1000);
 
+        // --- NAVIGATION TAB SYSTEM ---
         function openTab(evt, tabName) {
             let i, tabContent, tabBtns;
             tabContent = document.getElementsByClassName("tab-content");
@@ -375,11 +650,13 @@
             document.getElementById(tabName).style.display = "block";
             evt.currentTarget.className += " active";
             
+            // Re-render Leaflet Map when switching to Map tab
             if(tabName === 'mapTab') {
                 setTimeout(() => { map.invalidateSize(); }, 200);
             }
         }
 
+        // --- LEAFLET MAP & OSRM ROUTING SYSTEM ---
         const destLat = 14.5919935;
         const destLng = 120.9723554;
 
@@ -501,6 +778,7 @@
             }, 300);
         }
 
+        // INITIALIZATION ON PAGE LOAD
         window.onload = function() {
             updateLiveClock();
             trackVisitor();
