@@ -36,22 +36,37 @@
             </div>
         </header>
 
-        <!-- Navigation Tabs -->
+        <!-- Navigation Tabs (Kasama na ang Mechanics at Criteria Tab) -->
         <div class="tab-buttons">
             <button class="tab-btn active" onclick="openTab(event, 'invitationTab')">💌 Imbitasyon</button>
+            <button class="tab-btn" onclick="openTab(event, 'mechanicsTab')">📜 Mechanics & Criteria</button>
             <button class="tab-btn" onclick="openTab(event, 'mapTab')">Mapa at Event Place</button>
             <button class="tab-btn" onclick="openTab(event, 'attireTab')">Gabay sa Kasuotan</button>
             <button class="tab-btn" onclick="openTab(event, 'summaryTab')">📊 User Summary</button>
         </div>
 
-        <!-- TAB 0: Imbitasyon (Kasama ang bagong opisyal na paanyaya mula sa larawan) -->
+        <!-- TAB 0: Imbitasyon (Kasama ang dalawang poster ng paanyaya) -->
         <div id="invitationTab" class="tab-content active">
-            <div class="invitation-card-display">
-                <img src="INVITATION.jpg" alt="Fiesta de Navidad Invitation" class="invitation-image-main">
+            <div class="invitation-gallery">
+                <div class="invitation-card-display">
+                    <img src="INVITATION.jpg" alt="Fiesta de Navidad Invitation" class="invitation-image-main">
+                </div>
+                <div class="invitation-card-display" style="margin-top: 20px;">
+                    <img src="INVITATION_2.png" alt="Philippine Folk Dance Show Poster" class="invitation-image-main">
+                </div>
             </div>
         </div>
 
-        <!-- TAB 1: Map & Event Place Pictures -->
+        <!-- TAB 1: Mechanics at Criteria (BAGONG TAB) -->
+        <div id="mechanicsTab" class="tab-content" style="display:none;">
+            <h2>Mekanismo at Pamantayan sa Paghahatol</h2>
+            <p>Narito ang opisyal na mechanics at criteria para sa gaganaping Philippine Folk Dance Competition[cite: 3]:</p>
+            <div class="invitation-card-display">
+                <img src="MECHANICS AND CRITERIA.png" alt="Mechanics and Criteria for Judging" class="invitation-image-main">
+            </div>
+        </div>
+
+        <!-- TAB 2: Map & Event Place Pictures -->
         <div id="mapTab" class="tab-content" style="display:none;">
             <h2>Gabay Patungo sa Himpilan</h2>
             <p>Ilagay ang iyong lokasyon (Siyudad/Bayan) o i-click ang GPS upang makita ang direktang ruta sa mismong mapa sa ibaba!</p>
@@ -108,7 +123,7 @@
             </div>
         </div>
 
-        <!-- TAB 2: Attire / Susuotin -->
+        <!-- TAB 3: Attire / Susuotin -->
         <div id="attireTab" class="tab-content" style="display:none;">
             <h2>Kasuotang Pilipino / Historic Style</h2>
             <p>Upang mas maging angkop sa ating temang makasaysayan, hinihimok ang lahat na dumalo suot ang mga sumusunod na istilo:</p>
@@ -120,7 +135,7 @@
             </div>
         </div>
 
-        <!-- TAB 3: User Summary & Analytics -->
+        <!-- TAB 4: User Summary & Analytics -->
         <div id="summaryTab" class="tab-content" style="display:none;">
             <h2>📊 Buod ng mga Gumagamit ng Site</h2>
             <p>Dito makikita ang kabuuang bilang ng mga bumisita, ang uri ng telepono/device na kanilang ginamit, at ang graph ng mga siyudad kung saan sila nagmula.</p>
@@ -180,7 +195,7 @@
         .attire-card-container { background: #fff; padding: 10px; border-radius: 4px; border: 1px solid #8c6d46; }
         .attire-img-fixed { width: 100% !important; height: auto !important; max-height: 500px !important; object-fit: contain !important; display: block !important; margin: 0 auto !important; background: #fff !important; }
 
-        /* Estilo para sa Display ng Invitation Image */
+        /* Estilo para sa Display ng Image Cards */
         .invitation-card-display {
             text-align: center;
             padding: 10px;
@@ -192,7 +207,7 @@
         .invitation-image-main {
             width: 100% !important;
             height: auto !important;
-            max-height: 700px !important;
+            max-height: 800px !important;
             object-fit: contain !important;
             display: block !important;
             margin: 0 auto !important;
@@ -218,7 +233,7 @@
             .sub-title { font-size: 0.8rem; }
             .schedule-text { font-size: 0.75rem; }
             .attire-img-fixed { max-height: 320px !important; }
-            .invitation-image-main { max-height: 450px !important; }
+            .invitation-image-main { max-height: 480px !important; }
         }
     </style>
 
